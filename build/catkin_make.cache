@@ -1,0 +1,2 @@
+bert2_moveit:table_simulator
+-DCATKIN_DEVEL_PREFIX=/home/harrison/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/harrison/catkin_ws/install -G Unix Makefiles

@@ -1,0 +1,2 @@
+set(table_simulator_MESSAGE_FILES "/home/harrison/catkin_ws/src/table_simulator/msg/Human.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Robot.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Sensors.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Gaze.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Pressure.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Location.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Joints.msg;/home/harrison/catkin_ws/src/table_simulator/msg/Hand.msg")
+set(table_simulator_SERVICE_FILES "")

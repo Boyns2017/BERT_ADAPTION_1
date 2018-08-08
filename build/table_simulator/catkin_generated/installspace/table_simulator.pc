@@ -1,0 +1,8 @@
+prefix=/home/harrison/catkin_ws/install
+
+Name: table_simulator
+Description: Description of table_simulator
+Version: 0.0.1
+Cflags: -I/home/harrison/catkin_ws/install/include
+Libs: -L/home/harrison/catkin_ws/install/lib 
+Requires: message_runtime

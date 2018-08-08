@@ -1,0 +1,23 @@
+
+(cl:in-package :asdf)
+
+(defsystem "table_simulator-msg"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils )
+  :components ((:file "_package")
+    (:file "Pressure" :depends-on ("_package_Pressure"))
+    (:file "_package_Pressure" :depends-on ("_package"))
+    (:file "Joints" :depends-on ("_package_Joints"))
+    (:file "_package_Joints" :depends-on ("_package"))
+    (:file "Robot" :depends-on ("_package_Robot"))
+    (:file "_package_Robot" :depends-on ("_package"))
+    (:file "Sensors" :depends-on ("_package_Sensors"))
+    (:file "_package_Sensors" :depends-on ("_package"))
+    (:file "Gaze" :depends-on ("_package_Gaze"))
+    (:file "_package_Gaze" :depends-on ("_package"))
+    (:file "Hand" :depends-on ("_package_Hand"))
+    (:file "_package_Hand" :depends-on ("_package"))
+    (:file "Location" :depends-on ("_package_Location"))
+    (:file "_package_Location" :depends-on ("_package"))
+    (:file "Human" :depends-on ("_package_Human"))
+    (:file "_package_Human" :depends-on ("_package"))
+  ))
