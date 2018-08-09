@@ -23,6 +23,7 @@ from geometry_msgs.msg import Vector3
 from std_msgs.msg import Int8
 
 correction = 0
+drop = 0
 
 def main():
 	rospy.init_node('object', anonymous=True)
@@ -31,7 +32,7 @@ def main():
 	setmodel(ModelState('object',Pose(Point(0.0,0.0,0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	#Run loop for all the simulation time length
 	while not rospy.is_shutdown():
-    		rospy.sleep(0.01)
+		rospy.sleep(0.01)
     		rospy.Subscriber('robot_has_piece', Int8,correct_gazebo)
     		if correction == 0:
     			getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
@@ -47,7 +48,15 @@ def main():
 			piece.publish(0.48,0.17,0.705)
 			print str(0.48)+','+str(0.17)+','+str(0.705)
 		rospy.sleep(0.01)
-		rospy.Subscriber('resetpiece', Int8,reset)
+		if drop == 1:
+			print "Human Dive"
+		 	getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
+		data = getmodel('object','')
+		piece=rospy.Publisher('piece_location', Point,queue_size=1,latch=True) 
+		piece.publish(data.pose.position.x+0.3,data.pose.position.y-0.3,data.pose.position.z+0.555)
+		print str(data.pose.position.x+0.3)+','+str(data.pose.position.y-0.3)+','+str(data.pose.position.z+0.555)
+
+		rospy.Subscriber('resetpiece', Int8, reset)
 		rospy.Subscriber('dropped_piece', Int8, dropped_it)	
     			
 def correct_gazebo(data):
@@ -59,18 +68,19 @@ def correct_gazebo(data):
 		
 def reset(data):
 	if data.data == 1:
-		print "Hello we are in RESET"	
+		print "RESET NOW"	
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(0.0,0.0,0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-
+	
 def dropped_it(data):
+	global drop
 	if data.data == 1:
-		print "Hello we are in DROPPED_IT"	
+		drop = 1
+		print "DROPPED_IT"	
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(1.0, 0.0, 0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-
-
-
+	else:
+		drop = 0
 if __name__ == '__main__':
 	try:
 		main()

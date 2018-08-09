@@ -1,6 +1,3 @@
-Assertion 3 at test 1: Passed at global time 17.1525650024
-Assertion 3 at test 1: Passed at global time 17.3389911652
-Assertion 3 at test 1: Passed at global time 17.5157580376
-Assertion 3 at test 2: Passed at global time 18.6784129143
-Assertion 3 at test 2: Passed at global time 18.8664989471
-Assertion 3 at test 2: Passed at global time 19.0534200668
+Assertion 3 at test 1: Passed at global time 17.8910250664
+Assertion 3 at test 1: Passed at global time 18.0851869583
+Assertion 3 at test 1: Passed at global time 18.2805879116

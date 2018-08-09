@@ -29,12 +29,13 @@ from std_msgs.msg import Float64
 from std_msgs.msg import Int8
 from geometry_msgs.msg import Point
 from coverage import Coverage
-
+import random
 
 
 
 #global variables
 reception = 0
+x = 0
 reception2 = 0
 piece = 0
 location_ok = 0
@@ -153,8 +154,8 @@ class Move(smach.State):
     	#cov.start()	
 	#Path planning towards the piece
 	
-	x = 5
-	#random.randint(0, 10)
+	#x = random.randint(0, 10)
+	x=2
 
 	theplans = interface([-0.5,0.0,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
 	for i,plan in enumerate(theplans):
@@ -184,7 +185,7 @@ class Move(smach.State):
 	hand2 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
 	hand2.publish(1)
 	rospy.sleep(0.1)
-	if x == 5:
+	if x==2:
 		return 'outcome2'
 	#cov.stop()
 	#cov.save()
@@ -409,8 +410,59 @@ class Drop(smach.State):
 	dropped.publish(0)
 
         return 'outcome1'
+#-------------------------------------------------------------------------------------------------------
+
+class Robot_Pick_Up(smach.State):
+    def __init__(self):
+    	smach.State.__init__(self, outcomes=['outcome1'])
+    
+    def execute(self, userdata):
+		theplans = interface([0.0,0.05,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
+		for i,plan in enumerate(theplans):
+			set_robot_joints(plan)		
+		move_hand('close')
+		rospy.sleep(0.5)
+		hand = rospy.Publisher('robot_gripper', Int8, queue_size=1,latch=True)
+		hand.publish(1)
+		rospy.sleep(0.5)
+		hand.publish(0)
+		pubpress = rospy.Publisher('pressure_e1', Int8, queue_size=1,latch=True)
+		pubpress.publish(1)
+		rospy.sleep(0.2)
+		rospy.sleep(1)
+		hand2 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
+		hand2.publish(1)
+		rospy.sleep(0.1)
+		return 'outcome1'
 
 #-------------------------------------------------------------------------------------------------------
+
+class Reset_Drop(smach.State):
+    def __init__(self):
+    	smach.State.__init__(self, outcomes=['outcome1','outcome2'])
+    
+    def execute(self, userdata):
+    	global leg_counter
+    	leg_counter = leg_counter + 1
+    	#print leg_counter
+	rospy.sleep(5.0)
+    	pubrel = rospy.Publisher('resetpiece', Int8, queue_size=1,latch=True)
+    	pubrel.publish(1)
+    	rospy.sleep(0.1)
+    	pubrel.publish(0)
+	hand3 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
+	hand3.publish(0)
+    	rospy.sleep(0.1)
+    	pubpiecedone = rospy.Publisher('legdone', Int8, queue_size=1,latch=True) 
+    	pubpiecedone.publish(0)
+    	pubrel.publish(0)
+    	rospy.sleep(0.2)
+    	if leg_counter >= 4:
+    		return 'outcome2'
+        return 'outcome1'
+
+#-------------------------------------------------------------------------------------------------------
+
 def main(same_seed):
 	random.seed(same_seed)
 	rospy.init_node('robot', anonymous=True) #Start node first
@@ -456,7 +508,17 @@ def main(same_seed):
 		smach.StateMachine.add('Discard', Discard(), transitions={'outcome1':'Receive1','outcome2':'tableDone'})
 
 		#Drop
-		smach.StateMachine.add('Drop', Drop(), transitions={'outcome1':'Discard'})
+		smach.StateMachine.add('Drop', Drop(), transitions={'outcome1':'Timeout4'})
+		smach.StateMachine.add('Timeout4',Timeout(), transitions={'outcome1':'Reset_Drop'}) 
+
+		#Reset Drop
+		smach.StateMachine.add('Reset_Drop', Reset_Drop(), transitions={'outcome1':'Receive1', 'outcome2':'tableDone'})
+
+		#Pick_Up
+		smach.StateMachine.add('Robot_Pick_Up', Robot_Pick_Up(), transitions={'outcome1':'Reset_Drop'})
+
+
+
 	# Execute SMACH plan
     	outcome = sm.execute()
 	
@@ -467,8 +529,8 @@ if __name__ == '__main__':
 	cov.start()
 	try:
     		main(sys.argv[1])
-    		cov.stop()
     		cov.html_report(directory='covhtml')
+    		cov.stop()
 	except rospy.ROSInterruptException: #to stop the code when pressing Ctr+c
 		cov.stop()
     		cov.save()
