@@ -48,14 +48,15 @@ def main():
 			piece.publish(0.48,0.17,0.705)
 			print str(0.48)+','+str(0.17)+','+str(0.705)
 		rospy.sleep(0.01)
-		if drop == 1:
-			print "Human Dive"
-		 	getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
-		data = getmodel('object','')
-		piece=rospy.Publisher('piece_location', Point,queue_size=1,latch=True) 
-		piece.publish(data.pose.position.x+0.3,data.pose.position.y-0.3,data.pose.position.z+0.555)
+		# if drop == 1:
+		# 	print "Human Dive"
+		# 	rospy.sleep(4)
+		# 	trigger = rospy.Publisher("Trigger_Finger", Int8, queue_size=1,latch=True) 
+		#  	getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
+		# 	data = getmodel('object','')
+		# 	piece=rospy.Publisher('piece_location', Point,queue_size=1,latch=True) 
+		# 	piece.publish(data.pose.position.x+0.3,data.pose.position.y-0.3,data.pose.position.z+0.555)
 		print str(data.pose.position.x+0.3)+','+str(data.pose.position.y-0.3)+','+str(data.pose.position.z+0.555)
-
 		rospy.Subscriber('resetpiece', Int8, reset)
 		rospy.Subscriber('dropped_piece', Int8, dropped_it)	
     			

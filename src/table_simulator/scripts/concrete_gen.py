@@ -12,6 +12,7 @@ from table_simulator.msg import *
 x=0.0
 y=0.0
 z=0.0
+trigger = 0.0
 
 
 def one_n_mapping_gaze(g_or_b):
@@ -42,7 +43,8 @@ def one_n_mapping_location(g_or_b):
 	#Location_y	-0.3	1.0	0.25
 	#Location_z	0.5	1.6	0.65
 
-	if g_or_b == 1:
+
+	if g_or_b == 1 or trigger == 5:
 		rospy.sleep(0.5)
 		rospy.Subscriber("piece_location", Point,check_point1) 
 		rospy.sleep(0.2)
@@ -51,6 +53,7 @@ def one_n_mapping_location(g_or_b):
 		rospy.sleep(0.5)
 		rospy.Subscriber("piece_location", Point,check_point3)
 		rospy.sleep(0.2)
+	print "In one_n_mapping_location"	
 	pub = rospy.Publisher('location',Location, queue_size=1,latch=True)
 	pub.publish(x,y,z)
 	rospy.sleep(0.2)

@@ -178,7 +178,8 @@ class Left_It(smach.State):
 	# Need to extend number of outcomes here to accomdate the calculation ie is it too far or close
     def execute(self, userdata):
 	print "Checking Distance"	
-    	rospy.sleep(0.1)	
+    	rospy.sleep(0.1)
+	return 'outcome1'	
 #-----------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 def main(name_file,xx):
@@ -190,7 +191,7 @@ def main(name_file,xx):
 	#Create machine by reading instruction list
 	global instructions
 	global data
-	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/test_folder/'+name_file+'.txt','r')): 
+	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/abstract_tests/'+name_file+'.txt','r')): 
 		if re.search("Robot_does_not_notice",command): #if the command is to send a signal
 			instructions.append('Robot_does_not_notice')
  		elif re.search("Leg_Dropped",command):
@@ -209,8 +210,8 @@ def main(name_file,xx):
 			instructions.append('robot_left_it')        
 		elif re.search("human_leaves_it_too_long",command):
 			instructions.append('human_leaves_it_too_long') 
-		elif re.search("human_notices",command):
-			instructions.append('human_notices')
+		elif re.search("human_noticed",command):
+			instructions.append('human_noticed')
 		elif re.search("human_far",command): #if the command is to set the value of a variable
 			instructions.append('human_far') 
 		elif re.search("human_left_it",command):
@@ -237,45 +238,24 @@ def main(name_file,xx):
 			instructions.append('receive')
 		elif re.search("bored",command):
 			instructions.append('bored')
-		elif re.search("tell_leg",command): #if the command is to send a signal
-			instructions.append('tell_leg')
-		elif re.search("receive_signal",command): #if the command is to send a signal
-			instructions.append('receive_signal')						
 		else:
 			instructions.append('')
 
 	for i in range(len(instructions)-1):
 		# Beginning of extended Instructions
-		# To see the added states look above
-		if instructions[i] == 'tell_leg':
-			if instructions[i+1]== 'receive_signal':	# SHould change this to human_notices Ie Waits too long
-				smach.StateMachine.add('tell_leg', SendA1(), 
-		                transitions={'outcome1':'RECEIVE'})
-
-		if instructions[i] == 'receive_signal':
-			if instructions[i+1]== 'Leg_Dropped':
-				smach.StateMachine.add('RECEIVE', Receive(), 
-		                transitions={'outcome1':'Leg_Has_Been_Dropped','outcome2':'RECEIVE'})
-
+		# To see the added states look above	
 		if instructions[i] == 'Leg_Dropped':
-			if instructions[i+1]== 'human_notices':	# SHould change this to human_notices Ie Waits too long
-				smach.StateMachine.add('Leg_Has_Been_Dropped', Dropped(), 
-		                transitions={'outcome1':'human_notices'})
-
-		if instructions[i] == 'human_notices':
-			if instructions[i+1]== 'human_waits':
-				smach.StateMachine.add('human_notices', Waits(), 
-		                transitions={'outcome1':'human_waits'})
-		
+			if instructions[i+1]== 'human_waits':	# SHould change this to human_notices Ie Waits too long
+				smach.StateMachine.add('Leg_Dropped'+str(i), Dropped(), 
+		                transitions={'outcome1':'human_waits'+str(i+1)})
 		if instructions[i] == 'human_waits':
-			if instructions[i+1] == 'human_left_it':
-				smach.StateMachine.add('human_waits', Waits(),
-				transitions={'outcome1':'end'})
-		
+			if instructions[i+1]== 'human_waits':
+				smach.StateMachine.add('human_waits'+str(i), Waits(), 
+		                transitions={'outcome1':'human_left_it'+str(i+1)})	
 		if instructions[i] == 'human_left_it':
-			smach.StateMachine.add('human_left_it', Left_It(),
-			transitions={'outcome1':'end'})
-
+			if instructions[i+1]== 'end':
+				smach.StateMachine.add('human_left_it'+str(i), Left_It(), 
+		                transitions={'outcome1':'end'+str(i+1)})
 		# End of extended Instructions			
 		if instructions[i] == 'sendA1':
 			if instructions[i+1]== 'sendA1':

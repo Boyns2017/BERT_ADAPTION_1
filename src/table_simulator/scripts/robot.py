@@ -155,8 +155,8 @@ class Move(smach.State):
 	#Path planning towards the piece
 	
 	#x = random.randint(0, 10)
-	x=2
-
+	trigger_drop_pathway = 2
+	
 	theplans = interface([-0.5,0.0,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
 	for i,plan in enumerate(theplans):
 		set_robot_joints(plan)		
@@ -185,7 +185,7 @@ class Move(smach.State):
 	hand2 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
 	hand2.publish(1)
 	rospy.sleep(0.1)
-	if x==2:
+	if trigger_drop_pathway == 2:
 		return 'outcome2'
 	#cov.stop()
 	#cov.save()
@@ -394,6 +394,7 @@ class Discard(smach.State):
     		return 'outcome2'
         return 'outcome1'
 
+# New
 #-------------------------------------------------------------------------------------------------------
 class Drop(smach.State):
     def __init__(self):
@@ -410,6 +411,8 @@ class Drop(smach.State):
 	dropped.publish(0)
 
         return 'outcome1'
+
+# New
 #-------------------------------------------------------------------------------------------------------
 
 class Robot_Pick_Up(smach.State):
@@ -435,6 +438,7 @@ class Robot_Pick_Up(smach.State):
 		rospy.sleep(0.1)
 		return 'outcome1'
 
+# New
 #-------------------------------------------------------------------------------------------------------
 
 class Reset_Drop(smach.State):
@@ -507,6 +511,7 @@ def main(same_seed):
 		#Discard piece
 		smach.StateMachine.add('Discard', Discard(), transitions={'outcome1':'Receive1','outcome2':'tableDone'})
 
+		# This is all new
 		#Drop
 		smach.StateMachine.add('Drop', Drop(), transitions={'outcome1':'Timeout4'})
 		smach.StateMachine.add('Timeout4',Timeout(), transitions={'outcome1':'Reset_Drop'}) 
