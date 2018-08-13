@@ -1,12 +1,5 @@
-robot_left_it
+tell leg
+receivesignal
 Leg_Dropped
-Robot_does_not_notice
 human_waits
-robot_left_it
-human_left_it
-robot_left_it
-Leg_Dropped
-Robot_does_not_notice
-human_waits
-robot_left_it
 human_left_it

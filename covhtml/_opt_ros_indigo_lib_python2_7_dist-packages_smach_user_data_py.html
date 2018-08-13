@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/smach/user_data.py: 10%</title>
+    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/smach/user_data.py: 5%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>/opt/ros/indigo/lib/python2.7/dist-packages/smach/user_data.py</b> :
-            <span class="pc_cov">10%</span>
+            <span class="pc_cov">5%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             127 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">13 run</span>
-            <span class="mis shortkey_m button_toggle_mis">114 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">6 run</span>
+            <span class="mis shortkey_m button_toggle_mis">121 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -192,11 +192,11 @@
 <p id="n123" class="stm mis"><a href="#n123">123</a></p>
 <p id="n124" class="pln"><a href="#n124">124</a></p>
 <p id="n125" class="stm mis"><a href="#n125">125</a></p>
-<p id="n126" class="stm run hide_run"><a href="#n126">126</a></p>
-<p id="n127" class="stm run hide_run"><a href="#n127">127</a></p>
-<p id="n128" class="stm run hide_run"><a href="#n128">128</a></p>
-<p id="n129" class="stm run hide_run"><a href="#n129">129</a></p>
-<p id="n130" class="stm run hide_run"><a href="#n130">130</a></p>
+<p id="n126" class="stm mis"><a href="#n126">126</a></p>
+<p id="n127" class="stm mis"><a href="#n127">127</a></p>
+<p id="n128" class="stm mis"><a href="#n128">128</a></p>
+<p id="n129" class="stm mis"><a href="#n129">129</a></p>
+<p id="n130" class="stm mis"><a href="#n130">130</a></p>
 <p id="n131" class="pln"><a href="#n131">131</a></p>
 <p id="n132" class="stm mis"><a href="#n132">132</a></p>
 <p id="n133" class="pln"><a href="#n133">133</a></p>
@@ -239,8 +239,8 @@
 <p id="n170" class="stm mis"><a href="#n170">170</a></p>
 <p id="n171" class="pln"><a href="#n171">171</a></p>
 <p id="n172" class="stm mis"><a href="#n172">172</a></p>
-<p id="n173" class="stm run hide_run"><a href="#n173">173</a></p>
-<p id="n174" class="stm run hide_run"><a href="#n174">174</a></p>
+<p id="n173" class="stm mis"><a href="#n173">173</a></p>
+<p id="n174" class="stm mis"><a href="#n174">174</a></p>
 <p id="n175" class="stm mis"><a href="#n175">175</a></p>
 <p id="n176" class="stm mis"><a href="#n176">176</a></p>
 <p id="n177" class="stm mis"><a href="#n177">177</a></p>
@@ -373,11 +373,11 @@
 <p id="t123" class="stm mis"><span class="key">class</span> <span class="nam">Remapper</span><span class="op">(</span><span class="nam">object</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t124" class="pln">    <span class="str">"""Key-remapping proxy to a SMACH userdata structure."""</span><span class="strut">&nbsp;</span></p>
 <p id="t125" class="stm mis">    <span class="key">def</span> <span class="nam">__init__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">ud</span><span class="op">,</span> <span class="nam">input_keys</span><span class="op">=</span><span class="op">[</span><span class="op">]</span><span class="op">,</span> <span class="nam">output_keys</span><span class="op">=</span><span class="op">[</span><span class="op">]</span><span class="op">,</span> <span class="nam">remapping</span><span class="op">=</span><span class="op">{</span><span class="op">}</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t126" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">_ud</span> <span class="op">=</span> <span class="nam">ud</span><span class="strut">&nbsp;</span></p>
-<p id="t127" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">_input</span> <span class="op">=</span> <span class="nam">input_keys</span><span class="strut">&nbsp;</span></p>
-<p id="t128" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">_output</span> <span class="op">=</span> <span class="nam">output_keys</span><span class="strut">&nbsp;</span></p>
-<p id="t129" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">_map</span> <span class="op">=</span>  <span class="nam">remapping</span><span class="strut">&nbsp;</span></p>
-<p id="t130" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">__initialized</span> <span class="op">=</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t126" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">_ud</span> <span class="op">=</span> <span class="nam">ud</span><span class="strut">&nbsp;</span></p>
+<p id="t127" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">_input</span> <span class="op">=</span> <span class="nam">input_keys</span><span class="strut">&nbsp;</span></p>
+<p id="t128" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">_output</span> <span class="op">=</span> <span class="nam">output_keys</span><span class="strut">&nbsp;</span></p>
+<p id="t129" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">_map</span> <span class="op">=</span>  <span class="nam">remapping</span><span class="strut">&nbsp;</span></p>
+<p id="t130" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">__initialized</span> <span class="op">=</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
 <p id="t131" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t132" class="stm mis">    <span class="key">def</span> <span class="nam">_remap</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">key</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t133" class="pln">        <span class="str">"""Return either the key or it's remapped value."""</span><span class="strut">&nbsp;</span></p>
@@ -420,8 +420,8 @@
 <p id="t170" class="stm mis">        <span class="key">return</span> <span class="nam">getattr</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">_ud</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_remap</span><span class="op">(</span><span class="nam">name</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t171" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t172" class="stm mis">    <span class="key">def</span> <span class="nam">__setattr__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">value</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t173" class="stm run hide_run">        <span class="key">if</span> <span class="nam">name</span><span class="op">[</span><span class="num">0</span><span class="op">]</span> <span class="op">==</span> <span class="str">'_'</span> <span class="key">or</span> <span class="str">'_Remapper__initialized'</span> <span class="key">not</span> <span class="key">in</span> <span class="nam">self</span><span class="op">.</span><span class="nam">__dict__</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t174" class="stm run hide_run">            <span class="key">return</span> <span class="nam">object</span><span class="op">.</span><span class="nam">__setattr__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t173" class="stm mis">        <span class="key">if</span> <span class="nam">name</span><span class="op">[</span><span class="num">0</span><span class="op">]</span> <span class="op">==</span> <span class="str">'_'</span> <span class="key">or</span> <span class="str">'_Remapper__initialized'</span> <span class="key">not</span> <span class="key">in</span> <span class="nam">self</span><span class="op">.</span><span class="nam">__dict__</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t174" class="stm mis">            <span class="key">return</span> <span class="nam">object</span><span class="op">.</span><span class="nam">__setattr__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">,</span> <span class="nam">value</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t175" class="stm mis">        <span class="key">if</span> <span class="nam">name</span> <span class="key">not</span> <span class="key">in</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_output</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t176" class="stm mis">            <span class="nam">smach</span><span class="op">.</span><span class="nam">logerr</span><span class="op">(</span><span class="str">"Writing to SMACH userdata key '%s' but the only keys that were declared as output from this state were: %s."</span> <span class="op">%</span> <span class="op">(</span><span class="nam">name</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_output</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t177" class="stm mis">            <span class="key">return</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
@@ -436,7 +436,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-08-08 18:51
+            created at 2018-08-11 18:58
         </p>
     </div>
 </div>

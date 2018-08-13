@@ -9,6 +9,6 @@
 
 /* Plans */
 
-+!setup : true <- get_beliefs; .print("hello world. This is the meta speaking"); tofile("Leg_Dropped"); .send(robot, tell, meta); .send(human, tell, meta).
++!setup : true <- get_beliefs; .print("hello world. This is the meta speaking"); .send(human, tell, meta).
 
 

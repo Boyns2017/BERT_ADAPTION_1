@@ -1,5 +1,0 @@
-Leg_Dropped
-robot_noticed
-robot_far
-human_waits
-human_left_it

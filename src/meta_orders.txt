@@ -1,0 +1,6 @@
+leg3
+dropped
+human_waits
+robot_notices
+far
+indecisive

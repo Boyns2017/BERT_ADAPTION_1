@@ -1,12 +1,7 @@
+tell leg
+receivesignal
 Leg_Dropped
-robot_noticed
-robot_far
-human_waits
+human_notices
+human_close
+human_indecisive
 human_left_it
-robot_left_it
-Leg_Dropped
-robot_noticed
-robot_far
-human_waits
-human_left_it
-robot_left_it

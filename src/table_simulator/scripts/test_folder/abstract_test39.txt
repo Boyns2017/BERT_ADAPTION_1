@@ -1,9 +1,0 @@
-Leg_Dropped
-robot_noticed
-robot_close
-robot_pick_up
-Leg_Dropped
-human_waits
-Robot_does_not_notice
-robot_left_it
-human_left_it

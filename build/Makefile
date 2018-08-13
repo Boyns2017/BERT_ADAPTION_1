@@ -241,19 +241,6 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
-# Target rules for targets named _catkin_empty_exported_target
-
-# Build rule for target.
-_catkin_empty_exported_target: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _catkin_empty_exported_target
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	$(MAKE) -f bert2_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build.make bert2_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-#=============================================================================
 # Target rules for targets named _table_simulator_generate_messages_check_deps_Gaze
 
 # Build rule for target.
@@ -487,6 +474,19 @@ table_simulator_genpy/fast:
 	$(MAKE) -f table_simulator/CMakeFiles/table_simulator_genpy.dir/build.make table_simulator/CMakeFiles/table_simulator_genpy.dir/build
 .PHONY : table_simulator_genpy/fast
 
+#=============================================================================
+# Target rules for targets named _catkin_empty_exported_target
+
+# Build rule for target.
+_catkin_empty_exported_target: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _catkin_empty_exported_target
+.PHONY : _catkin_empty_exported_target
+
+# fast build rule for target.
+_catkin_empty_exported_target/fast:
+	$(MAKE) -f bert2_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build.make bert2_moveit/CMakeFiles/_catkin_empty_exported_target.dir/build
+.PHONY : _catkin_empty_exported_target/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -507,7 +507,6 @@ help:
 	@echo "... tests"
 	@echo "... gtest"
 	@echo "... gtest_main"
-	@echo "... _catkin_empty_exported_target"
 	@echo "... _table_simulator_generate_messages_check_deps_Gaze"
 	@echo "... _table_simulator_generate_messages_check_deps_Hand"
 	@echo "... _table_simulator_generate_messages_check_deps_Human"
@@ -526,6 +525,7 @@ help:
 	@echo "... table_simulator_generate_messages_py"
 	@echo "... table_simulator_genlisp"
 	@echo "... table_simulator_genpy"
+	@echo "... _catkin_empty_exported_target"
 .PHONY : help
 
 

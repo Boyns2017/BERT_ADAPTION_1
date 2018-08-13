@@ -10,12 +10,18 @@
 +!setup : meta <- .print("Human is activated"); !activate.
 +!setup : true <- !setup.
 
-+!activate : leg1 <- -meta[source(meta)]; .print("leg1 Dropped");  !dropped.
-+!activate : leg2 <- -meta[source(meta)]; .print("leg1 Dropped");  !dropped.
-+!activate : leg3 <- -meta[source(meta)]; .print("leg1 Dropped");  !dropped.
-+!activate : leg4 <- -meta[source(meta)]; .print("leg1 Dropped"); !dropped.
++!activate : leg1 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
++!activate : leg2 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
++!activate : leg3 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
++!activate : leg4 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
 
-+!dropped : human_noticed <- -meta[source(meta)]; .print("human_notices"); tofile("human_noticed"); !checking_Distance.
+
++!informed : dropped <- -meta[source(meta)]; .print("leg1 Dropped"); tofile("Leg_Dropped"); !dropped.
++!informed : dropped <- -meta[source(meta)]; .print("leg1 Dropped"); tofile("Leg_Dropped"); !dropped.
++!informed : dropped <- -meta[source(meta)]; .print("leg1 Dropped"); tofile("Leg_Dropped"); !dropped.
++!informed : dropped <- -meta[source(meta)]; .print("leg1 Dropped"); tofile("Leg_Dropped"); !dropped.
+
++!dropped : human_notices <- -meta[source(meta)]; .print("human_notices"); tofile("human_notices"); !checking_Distance.
 +!dropped : human_waits <--meta[source(meta)]; .print("Waiting ..."); tofile("human_waits"); !human_leaves.
 
 
