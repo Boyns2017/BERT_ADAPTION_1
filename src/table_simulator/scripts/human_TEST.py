@@ -220,9 +220,9 @@ def main(name_file,xx):
 	for i in range(len(instructions)-1):
 		# Beginning of extended Instructions
 		# To see the added states look above	
-		# if instructions[i] == 'Leg_Dropped':
+		# if instructions[i] == 'tell leg':
 		# 	if instructions[i+1]== 'human_waits':	# SHould change this to human_notices Ie Waits too long
-		# 		smach.StateMachine.add('Leg_Dropped'+str(i), Dropped(), 
+		# 		smach.StateMachine.add('tell leg'+str(i), Dropped(), 
 		#                 transitions={'outcome1':'human_waits'+str(i+1)})
 		# if instructions[i] == 'human_waits':
 		# 	if instructions[i+1]== 'human_left_it':

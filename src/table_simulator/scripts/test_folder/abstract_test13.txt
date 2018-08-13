@@ -1,0 +1,12 @@
+Leg_Dropped
+robot_noticed
+robot_far
+human_waits
+robot_left_it
+human_left_it
+Leg_Dropped
+robot_noticed
+robot_far
+human_waits
+robot_left_it
+human_left_it

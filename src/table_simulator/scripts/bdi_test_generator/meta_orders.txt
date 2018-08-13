@@ -1,0 +1,5 @@
+leg3
+human_waits
+robot_does_not_notice
+far
+indecisive

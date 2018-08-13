@@ -1,0 +1,4 @@
+Leg_Dropped
+human_waits
+Robot_does_not_notice
+human_left_it

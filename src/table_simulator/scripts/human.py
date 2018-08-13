@@ -185,12 +185,24 @@ def main(name_file,xx):
     rospy.init_node('human', anonymous=True)
     random.seed(xx)
     sm = smach.StateMachine(outcomes=['end'])
+    name_file = 'abstract_test1'
+    with sm:
+	#Create machine by reading instruction list
+	global instructions
+	global data
+
+	#-----------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------
+def main(name_file,xx):
+    rospy.init_node('human', anonymous=True)
+    random.seed(xx)
+    sm = smach.StateMachine(outcomes=['end'])
 
     with sm:
 	#Create machine by reading instruction list
 	global instructions
 	global data
-	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/test_folder/'+name_file+'.txt','r')): 
+	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/abstract_tests/'+name_file+'.txt','r')): 
 		if re.search("Robot_does_not_notice",command): #if the command is to send a signal
 			instructions.append('Robot_does_not_notice')
  		elif re.search("Leg_Dropped",command):
@@ -247,17 +259,17 @@ def main(name_file,xx):
 	for i in range(len(instructions)-1):
 		# Beginning of extended Instructions
 		# To see the added states look above
-		if instructions[i] == 'tell_leg':
-			if instructions[i+1]== 'receive_signal':	# SHould change this to human_notices Ie Waits too long
+		if instructions[i] == 'Leg_Dropped':
+			if instructions[i+1]== 'Leg_Dropped':	# SHould change this to human_notices Ie Waits too long
 				smach.StateMachine.add('tell_leg', SendA1(), 
 		                transitions={'outcome1':'RECEIVE'})
 
 		if instructions[i] == 'receive_signal':
-			if instructions[i+1]== 'Leg_Dropped':
+			if instructions[i+1]== 'tell leg':
 				smach.StateMachine.add('RECEIVE', Receive(), 
 		                transitions={'outcome1':'Leg_Has_Been_Dropped','outcome2':'RECEIVE'})
 
-		if instructions[i] == 'Leg_Dropped':
+		if instructions[i] == 'tell leg':
 			if instructions[i+1]== 'human_notices':	# SHould change this to human_notices Ie Waits too long
 				smach.StateMachine.add('Leg_Has_Been_Dropped', Dropped(), 
 		                transitions={'outcome1':'human_notices'})
@@ -344,9 +356,9 @@ def main(name_file,xx):
 		                transitions={'outcome1':'Gaze1'+str(i+1)})
 		                
 		elif instructions[i] == 'receive':
-			if instructions[i+1]== 'Leg_Dropped':
+			if instructions[i+1]== 'tell leg':
 				smach.StateMachine.add('Receive'+str(i), Receive(), 
-		                transitions={'outcome1':'Leg_Dropped'+str(i+1),'outcome2':'Receive'+str(i)})			
+		                transitions={'outcome1':'tell leg'+str(i+1),'outcome2':'Receive'+str(i)})			
 			elif instructions[i+1]== 'sendA1':
 				smach.StateMachine.add('Receive'+str(i), Receive(), 
 		                transitions={'outcome1':'SendA1'+str(i+1),'outcome2':'Receive'+str(i)})
@@ -647,7 +659,7 @@ def main(name_file,xx):
 		transitions={'outcome1':'end'})
 	
  
-    outcome = sm.execute()
+    	outcome = sm.execute()
 
 
 #------------------------------------------------------------------------------------------------------------

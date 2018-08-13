@@ -14,6 +14,8 @@ Format of the joints used for planning:
 Assembled from handover code by Dejanira Araiza-Illan February 2016.
 """
 import sys
+import thread
+import time
 import os
 import rospy
 import smach
@@ -186,11 +188,11 @@ class Move(smach.State):
 	hand2.publish(1)
 	rospy.sleep(0.1)
 	if trigger_drop_pathway == 2:
+		#Will I need to thread this
 		return 'outcome2'
 	#cov.stop()
 	#cov.save()
 	return 'outcome1'
-	
 
 #--------------------------------------------------------------------------------------------------------------------
 class Send(smach.State):
@@ -461,6 +463,7 @@ class Reset_Drop(smach.State):
     	pubpiecedone.publish(0)
     	pubrel.publish(0)
     	rospy.sleep(0.2)
+	thread.start_new_thread(execfile("/home/harrison/catkin_ws/src/run.py"))
     	if leg_counter >= 4:
     		return 'outcome2'
         return 'outcome1'
