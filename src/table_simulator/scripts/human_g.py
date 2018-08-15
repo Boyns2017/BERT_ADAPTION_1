@@ -35,10 +35,18 @@ def move_hand(data):
 	gx = x-1.15
 	gy = y+0.43
 	gz = z-0.73
+	setmodel2 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
+	setmodel2(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
+
+def move_hand_object(data):
+	gx = data.x
+	gy = data.y
+	gz = data.z
 	print "In move hand"
 	setmodel2 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 	setmodel2(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	
+
 def reset_head_hand():
 	setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 	setmodel(ModelState('human_head',Pose(Point(0.0,0.0,0.0),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
@@ -58,10 +66,10 @@ def main():
 
    	while not rospy.is_shutdown():
 		rospy.sleep(0.005)
-		print "In human_g.py"
 		rospy.Subscriber("location", Location, move_hand)
 		rospy.sleep(0.005)
 		rospy.Subscriber("gaze", Gaze, move_head)
+		rospy.Subscriber("dropped_location", Location, move_hand_object)
 		rospy.sleep(0.005)
 		rospy.Subscriber("reset_human", Int8, reset_head_hand2)
 		

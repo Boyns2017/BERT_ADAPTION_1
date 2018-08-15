@@ -77,9 +77,16 @@ def dropped_it(data):
 	global drop
 	if data.data == 1:
 		drop = 1
-		print "DROPPED_IT"	
+		print("Dropped it!!")	
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
-		setmodel(ModelState('object',Pose(Point(1.0, 0.0, 0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
+		setmodel(ModelState('object',Pose(Point(1.0, 0.0, 0.0000),Quaternion(0.0,0.0,0.0,0.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
+		find_it = rospy.Publisher('dropped_location', Location,  queue_size=1,latch=True)
+		x = 0.20
+		y = 0.05
+		z = -0.2
+		find_it.publish(x,y,z)
+		print "find_it"
+		rospy.sleep(1)
 	else:
 		drop = 0
 if __name__ == '__main__':

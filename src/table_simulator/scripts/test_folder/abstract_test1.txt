@@ -1,5 +1,6 @@
-tell leg
-receivesignal
+inform_leg_begin
+React
 Leg_Dropped
-human_waits
-human_left_it
+human_notices
+human_close
+human_pick_up

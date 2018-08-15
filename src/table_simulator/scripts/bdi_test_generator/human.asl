@@ -10,10 +10,10 @@
 +!setup : meta <- .print("Human is activated"); !activate.
 +!setup : true <- !setup.
 
-+!activate : leg1 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
-+!activate : leg2 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
-+!activate : leg3 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
-+!activate : leg4 <- -meta[source(meta)];.print("Leg please"); tofile("tell leg"); tofile("receivesignal"); !informed.
++!activate : leg1 <- -meta[source(meta)];.print("Leg please"); tofile("inform_leg_begin"); tofile("React"); !informed.
++!activate : leg2 <- -meta[source(meta)];.print("Leg please"); tofile("inform_leg_begin"); tofile("React"); !informed.
++!activate : leg3 <- -meta[source(meta)];.print("Leg please"); tofile("inform_leg_begin"); tofile("React"); !informed.
++!activate : leg4 <- -meta[source(meta)];.print("Leg please"); tofile("inform_leg_begin"); tofile("React"); !informed.
 
 
 +!informed : dropped <- -meta[source(meta)]; .print("leg1 Dropped"); tofile("Leg_Dropped"); !dropped.

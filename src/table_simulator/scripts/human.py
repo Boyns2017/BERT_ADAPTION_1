@@ -177,44 +177,49 @@ class Left_It(smach.State):
         smach.State.__init__(self, outcomes=['outcome1'])
 	# Need to extend number of outcomes here to accomdate the calculation ie is it too far or close
     def execute(self, userdata):
-	print "Checking Distance"	
+	print "Leaves"	
     	rospy.sleep(0.1)	
+	return 'outcome1'
+#----------------------------------------------------------------------------------------------------------
+class Picks_It_Up(smach.State):
+    def __init__(self):
+        smach.State.__init__(self, outcomes=['outcome1'])
+	# Need to extend number of outcomes here to accomdate the calculation ie is it too far or close
+
+    def execute(self, userdata):
+	print "Leaves"	
+    	rospy.sleep(0.1)	
+	return 'outcome1'
+	
 #-----------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 def main(name_file,xx):
     rospy.init_node('human', anonymous=True)
     random.seed(xx)
     sm = smach.StateMachine(outcomes=['end'])
-    name_file = 'abstract_test1'
-    with sm:
-	#Create machine by reading instruction list
-	global instructions
-	global data
-
-	#-----------------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------------------
-def main(name_file,xx):
-    rospy.init_node('human', anonymous=True)
-    random.seed(xx)
-    sm = smach.StateMachine(outcomes=['end'])
 
     with sm:
 	#Create machine by reading instruction list
 	global instructions
 	global data
-	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/abstract_tests/'+name_file+'.txt','r')): 
+	# if name_file == 'abstract_test129.txt':
+	# 	folder = 'test_folder'
+	# else:
+	# 	folder = 'abstract_tests'	
+
+	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/test_folder/'+name_file+'.txt','r')): 
 		if re.search("Robot_does_not_notice",command): #if the command is to send a signal
 			instructions.append('Robot_does_not_notice')
  		elif re.search("Leg_Dropped",command):
 			instructions.append('Leg_Dropped')           
 		elif re.search("robot_noticed",command):
 			instructions.append('robot_noticed')
-		elif re.search("robot_close",command): #if the command is to set the value of a variable
-			instructions.append('robot_close') 
+		elif re.search("human_close",command): #if the command is to set the value of a variable
+			instructions.append('human_close') 
 		elif re.search("robot_far",command):
 			instructions.append('robot_far') 
-		elif re.search("robot_pick_up",command):
-			instructions.append('robot_pick_up')
+		elif re.search("human_pick_up",command):
+			instructions.append('human_pick_up')
 		elif re.search("robot_indecisive",command): #if the command is to set the value of a variable
 			instructions.append('robot_indecisive') 
 		elif re.search("robot_left_it",command):
@@ -246,50 +251,63 @@ def main(name_file,xx):
 		elif re.search("set_param gaze = 0",command):
 			instructions.append('gaze0')
 		elif re.search("receivesignal",command): #if the command is to receive a signal
-			instructions.append('receive')
+		 	instructions.append('receive')
 		elif re.search("bored",command):
 			instructions.append('bored')
-		elif re.search("tell_leg",command): #if the command is to send a signal
-			instructions.append('tell_leg')
-		elif re.search("receive_signal",command): #if the command is to send a signal
-			instructions.append('receive_signal')						
+		elif re.search("inform_leg_begin",command): #if the command is to send a signal
+			instructions.append('inform_leg_begin')
+		elif re.search("React",command): #if the command is to send a signal
+			instructions.append('receivesignal_react')						
 		else:
 			instructions.append('')
 
 	for i in range(len(instructions)-1):
 		# Beginning of extended Instructions
 		# To see the added states look above
-		if instructions[i] == 'Leg_Dropped':
-			if instructions[i+1]== 'Leg_Dropped':	# SHould change this to human_notices Ie Waits too long
-				smach.StateMachine.add('tell_leg', SendA1(), 
-		                transitions={'outcome1':'RECEIVE'})
 
-		if instructions[i] == 'receive_signal':
-			if instructions[i+1]== 'tell leg':
-				smach.StateMachine.add('RECEIVE', Receive(), 
-		                transitions={'outcome1':'Leg_Has_Been_Dropped','outcome2':'RECEIVE'})
-
-		if instructions[i] == 'tell leg':
-			if instructions[i+1]== 'human_notices':	# SHould change this to human_notices Ie Waits too long
-				smach.StateMachine.add('Leg_Has_Been_Dropped', Dropped(), 
-		                transitions={'outcome1':'human_notices'})
-
-		if instructions[i] == 'human_notices':
-			if instructions[i+1]== 'human_waits':
-				smach.StateMachine.add('human_notices', Waits(), 
-		                transitions={'outcome1':'human_waits'})
-		
-		if instructions[i] == 'human_waits':
-			if instructions[i+1] == 'human_left_it':
-				smach.StateMachine.add('human_waits', Waits(),
-				transitions={'outcome1':'end'})
-		
-		if instructions[i] == 'human_left_it':
-			smach.StateMachine.add('human_left_it', Left_It(),
-			transitions={'outcome1':'end'})
-
-		# End of extended Instructions			
-		if instructions[i] == 'sendA1':
+		# End of extended Instructions
+		if instructions[i] == 'inform_leg_begin':
+			if instructions[i+1] == 'receivesignal_react':
+				smach.StateMachine.add('tell_leg_react'+str(i), SendA1(), 
+		                transitions={'outcome1':'receivesignal_react'+str(i+1)})		
+		elif instructions[i] == 'receivesignal_react':
+			if instructions[i+1] == 'Leg_Dropped':
+				smach.StateMachine.add('receivesignal_react'+str(i), Receive(), 
+		                transitions={'outcome1':'Leg_Dropped'+str(i+1), 'outcome2':'receivesignal_react'+str(i)})
+		elif instructions[i] == 'Leg_Dropped':
+			if instructions[i+1] == 'human_waits':
+				smach.StateMachine.add('Leg_Dropped'+str(i), Dropped(), 
+		                transitions={'outcome1':'human_waits'+str(i+1)})
+			if instructions[i+1] == 'human_notices':
+				smach.StateMachine.add('Leg_Dropped'+str(i), Dropped(), 
+		                transitions={'outcome1':'human_notices'+str(i+1)})			
+		elif instructions[i] == 'human_notices':
+			if instructions[i+1] == 'human_close':			
+				smach.StateMachine.add('human_notices'+str(i), Waits(), 
+		                transitions={'outcome1':'human_close'+str(i+1)})
+			if instructions[i+1] == 'human_far':			
+				smach.StateMachine.add('human_notices'+str(i), Waits(), 
+		                transitions={'outcome1':'human_far'+str(i+1)})	
+		elif instructions[i] == 'human_close':
+			if instructions[i+1] == 'human_indecisive':			
+				smach.StateMachine.add('human_close'+str(i), Waits(), 
+		                transitions={'outcome1':'human_indecisive'+str(i+1)})
+			if instructions[i+1] == 'human_pick_up':			
+				smach.StateMachine.add('human_close'+str(i), Waits(), 
+		                transitions={'outcome1':'human_pick_up'+str(i+1)})				
+		elif instructions[i] == 'human_far':
+			if instructions[i+1] == 'human_left_it':			
+				smach.StateMachine.add('human_far'+str(i), Waits(), 
+		                transitions={'outcome1':'human_left_it'+str(i+1)})
+		elif instructions[i] == 'human_indecisive':
+			if instructions[i+1] == 'human_left_it':			
+				smach.StateMachine.add('human_indecisive'+str(i), Waits(), 
+		                transitions={'outcome1':'human_left_it'+str(i+1)})
+		elif instructions[i] == 'human_waits':	
+			if instructions[i+1] == 'human_left_it'	:	
+				smach.StateMachine.add('human_waits'+str(i), Waits(), 
+		                transitions={'outcome1':'human_left_it'+str(i+1)})							
+		elif instructions[i] == 'sendA1':
 			if instructions[i+1]== 'sendA1':
 				smach.StateMachine.add('SendA1'+str(i), SendA1(), 
 		                transitions={'outcome1':'SendA1'+str(i+1)})
@@ -658,7 +676,12 @@ def main(name_file,xx):
 		smach.StateMachine.add('Gaze1'+str(len(instructions)-1), Gaze1(), 
 		transitions={'outcome1':'end'})
 	
- 
+	elif instructions[len(instructions)-1] == 'human_left_it':
+		smach.StateMachine.add('human_left_it'+str(len(instructions)-1), Left_It(), 
+		transitions={'outcome1':'end'})	
+ 	elif instructions[len(instructions)-1] == 'human_pick_up':
+		smach.StateMachine.add('human_pick_up'+str(len(instructions)-1), Picks_It_Up(), 
+		transitions={'outcome1':'end'})	
     	outcome = sm.execute()
 
 

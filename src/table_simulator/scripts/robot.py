@@ -156,8 +156,7 @@ class Move(smach.State):
     	#cov.start()	
 	#Path planning towards the piece
 	
-	#x = random.randint(0, 10)
-	trigger_drop_pathway = 2
+	trigger_drop_pathway = 2#random.randint(0, 5)
 	
 	theplans = interface([-0.5,0.0,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
 	for i,plan in enumerate(theplans):
@@ -463,7 +462,7 @@ class Reset_Drop(smach.State):
     	pubpiecedone.publish(0)
     	pubrel.publish(0)
     	rospy.sleep(0.2)
-	thread.start_new_thread(execfile("/home/harrison/catkin_ws/src/run.py"))
+	#thread.start_new_thread(execfile("/home/harrison/catkin_ws/src/run.py"))
     	if leg_counter >= 4:
     		return 'outcome2'
         return 'outcome1'

@@ -45,7 +45,7 @@ i = 1
 print "Seperating"
 #/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/
 #/home/harrison/catkin_ws/src/table_simulator/scripts/test_folder/
-for num,command in enumerate(open('/home/harrison/catkin_ws/src/output.txt','r')):
+for num,command in enumerate(open('/home/harrison/catkin_ws/output.txt','r')):
 	f = open('/home/harrison/catkin_ws/src/table_simulator/scripts/test_folder/abstract_test'+str(i)+'.txt', 'a')
 	if re.search("-------",command):
 		f.close()
