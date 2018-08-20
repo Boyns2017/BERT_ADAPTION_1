@@ -31,8 +31,8 @@
 
         <h2 class="stats">
             403 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">221 run</span>
-            <span class="mis shortkey_m button_toggle_mis">182 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">222 run</span>
+            <span class="mis shortkey_m button_toggle_mis">181 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -627,8 +627,8 @@
 <p id="n558" class="stm run hide_run"><a href="#n558">558</a></p>
 <p id="n559" class="stm run hide_run"><a href="#n559">559</a></p>
 <p id="n560" class="stm run hide_run"><a href="#n560">560</a></p>
-<p id="n561" class="stm mis"><a href="#n561">561</a></p>
-<p id="n562" class="stm mis"><a href="#n562">562</a></p>
+<p id="n561" class="stm run hide_run"><a href="#n561">561</a></p>
+<p id="n562" class="stm run hide_run"><a href="#n562">562</a></p>
 <p id="n563" class="stm run hide_run"><a href="#n563">563</a></p>
 <p id="n564" class="pln"><a href="#n564">564</a></p>
 <p id="n565" class="stm run hide_run"><a href="#n565">565</a></p>
@@ -646,7 +646,7 @@
 <p id="n577" class="pln"><a href="#n577">577</a></p>
 <p id="n578" class="stm run hide_run"><a href="#n578">578</a></p>
 <p id="n579" class="stm run hide_run"><a href="#n579">579</a></p>
-<p id="n580" class="stm mis"><a href="#n580">580</a></p>
+<p id="n580" class="stm run hide_run"><a href="#n580">580</a></p>
 <p id="n581" class="stm run hide_run"><a href="#n581">581</a></p>
 <p id="n582" class="stm run hide_run"><a href="#n582">582</a></p>
 <p id="n583" class="stm mis"><a href="#n583">583</a></p>
@@ -870,8 +870,8 @@
 <p id="n801" class="stm run hide_run"><a href="#n801">801</a></p>
 <p id="n802" class="stm run hide_run"><a href="#n802">802</a></p>
 <p id="n803" class="stm run hide_run"><a href="#n803">803</a></p>
-<p id="n804" class="stm run hide_run"><a href="#n804">804</a></p>
-<p id="n805" class="stm run hide_run"><a href="#n805">805</a></p>
+<p id="n804" class="stm mis"><a href="#n804">804</a></p>
+<p id="n805" class="stm mis"><a href="#n805">805</a></p>
 <p id="n806" class="pln"><a href="#n806">806</a></p>
 <p id="n807" class="stm run hide_run"><a href="#n807">807</a></p>
 <p id="n808" class="pln"><a href="#n808">808</a></p>
@@ -1441,8 +1441,8 @@
 <p id="t558" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">local_endpoint</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">socket</span><span class="op">.</span><span class="nam">getsockname</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t559" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">remote_endpoint</span> <span class="op">=</span> <span class="op">(</span><span class="nam">dest_addr</span><span class="op">,</span> <span class="nam">dest_port</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t560" class="stm run hide_run">        <span class="key">except</span> <span class="nam">TransportInitError</span> <span class="key">as</span> <span class="nam">tie</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t561" class="stm mis">            <span class="nam">rospyerr</span><span class="op">(</span><span class="str">"Unable to initiate TCP/IP socket to %s:%s (%s): %s"</span><span class="op">%</span><span class="op">(</span><span class="nam">dest_addr</span><span class="op">,</span> <span class="nam">dest_port</span><span class="op">,</span> <span class="nam">endpoint_id</span><span class="op">,</span> <span class="nam">traceback</span><span class="op">.</span><span class="nam">format_exc</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t562" class="stm mis">            <span class="key">raise</span><span class="strut">&nbsp;</span></p>
+<p id="t561" class="stm run hide_run">            <span class="nam">rospyerr</span><span class="op">(</span><span class="str">"Unable to initiate TCP/IP socket to %s:%s (%s): %s"</span><span class="op">%</span><span class="op">(</span><span class="nam">dest_addr</span><span class="op">,</span> <span class="nam">dest_port</span><span class="op">,</span> <span class="nam">endpoint_id</span><span class="op">,</span> <span class="nam">traceback</span><span class="op">.</span><span class="nam">format_exc</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t562" class="stm run hide_run">            <span class="key">raise</span><span class="strut">&nbsp;</span></p>
 <p id="t563" class="stm run hide_run">        <span class="key">except</span> <span class="nam">Exception</span> <span class="key">as</span> <span class="nam">e</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t564" class="pln">            <span class="com">#logerr("Unknown error initiating TCP/IP socket to %s:%s (%s): %s"%(dest_addr, dest_port, endpoint_id, str(e)))</span><span class="strut">&nbsp;</span></p>
 <p id="t565" class="stm run hide_run">            <span class="nam">rospywarn</span><span class="op">(</span><span class="str">"Unknown error initiating TCP/IP socket to %s:%s (%s): %s"</span><span class="op">%</span><span class="op">(</span><span class="nam">dest_addr</span><span class="op">,</span> <span class="nam">dest_port</span><span class="op">,</span> <span class="nam">endpoint_id</span><span class="op">,</span> <span class="nam">traceback</span><span class="op">.</span><span class="nam">format_exc</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
@@ -1460,7 +1460,7 @@
 <p id="t577" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
 <p id="t578" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">header</span> <span class="op">=</span> <span class="nam">header</span><span class="strut">&nbsp;</span></p>
 <p id="t579" class="stm run hide_run">        <span class="key">if</span> <span class="str">'error'</span> <span class="key">in</span> <span class="nam">header</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t580" class="stm mis">            <span class="key">raise</span> <span class="nam">TransportInitError</span><span class="op">(</span><span class="str">"remote error reported: %s"</span><span class="op">%</span><span class="nam">header</span><span class="op">[</span><span class="str">'error'</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t580" class="stm run hide_run">            <span class="key">raise</span> <span class="nam">TransportInitError</span><span class="op">(</span><span class="str">"remote error reported: %s"</span><span class="op">%</span><span class="nam">header</span><span class="op">[</span><span class="str">'error'</span><span class="op">]</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t581" class="stm run hide_run">        <span class="key">for</span> <span class="nam">required</span> <span class="key">in</span> <span class="op">[</span><span class="str">'md5sum'</span><span class="op">,</span> <span class="str">'type'</span><span class="op">]</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t582" class="stm run hide_run">            <span class="key">if</span> <span class="key">not</span> <span class="nam">required</span> <span class="key">in</span> <span class="nam">header</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t583" class="stm mis">                <span class="key">raise</span> <span class="nam">TransportInitError</span><span class="op">(</span><span class="str">"header missing required field [%s]"</span><span class="op">%</span><span class="nam">required</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
@@ -1684,8 +1684,8 @@
 <p id="t801" class="stm run hide_run">                <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">socket</span> <span class="key">is</span> <span class="key">not</span> <span class="nam">None</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t802" class="stm run hide_run">                    <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t803" class="stm run hide_run">                        <span class="nam">self</span><span class="op">.</span><span class="nam">socket</span><span class="op">.</span><span class="nam">shutdown</span><span class="op">(</span><span class="nam">socket</span><span class="op">.</span><span class="nam">SHUT_RDWR</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t804" class="stm run hide_run">                    <span class="key">except</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t805" class="stm run hide_run">                        <span class="key">pass</span><span class="strut">&nbsp;</span></p>
+<p id="t804" class="stm mis">                    <span class="key">except</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t805" class="stm mis">                        <span class="key">pass</span><span class="strut">&nbsp;</span></p>
 <p id="t806" class="pln">                    <span class="key">finally</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t807" class="stm run hide_run">                        <span class="nam">self</span><span class="op">.</span><span class="nam">socket</span><span class="op">.</span><span class="nam">close</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t808" class="pln">            <span class="key">finally</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -1702,7 +1702,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-08-15 14:03
+            created at 2018-08-21 00:03
         </p>
     </div>
 </div>

@@ -64,11 +64,11 @@ class Gazebo_check1(smach.State):
    	getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
 	data2 = getmodel('human_hand','')
 	if abs(data2.pose.position.x+1.15-0.3)>=0.05 and abs(data2.pose.position.y-0.43+0.3)>=0.05 and abs(data2.pose.position.z+0.73-0.5555)>=0.05:
-		global stats
+#		global stats
 		stats.write('Assertion 3 at test ' + str(fileno) +': Passed at global time '+ str(time.time()-globaltime) +'\n')
 
         else:
-        	global stats
+#        	global stats
 		stats.write('Assertion 3 at test ' + str(fileno) +': Failed at global time '+ str(time.time()-globaltime) +'\n')
     	rospy.sleep(0.1)
 	return 'outcome1'

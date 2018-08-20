@@ -32,6 +32,7 @@ from std_msgs.msg import Int8
 from geometry_msgs.msg import Point
 from coverage import Coverage
 import random
+import subprocess
 
 
 
@@ -51,7 +52,9 @@ leg_counter = 0
 timeout_time = 0
 table_timeout = 0
 good_legs = 0
-
+trigger_drop_pathway = 0
+assert_normal = 0 
+file_number = 10
 #--------------------------------------------------------------------------------------------------------------------
 class Reset(smach.State):
     def __init__(self):
@@ -88,6 +91,12 @@ class ReceiveA1(smach.State):
 	reception = 0
 	rospy.sleep(0.05)
 	rospy.Subscriber("human_signals", Human, callback_signals) 
+	rospy.Subscriber('check_drop_now', Int8, check_drop_now_call)
+	# reset_hand = rospy.Publisher('reset_human', Int8, queue_size=1,latch=True)
+	# reset_hand.publish(1)
+	# rospy.sleep(1)
+	# reset_hand.publish(0)
+
 	if reception == 1:
 		count_timeout = 0
 		#cov.stop()
@@ -110,6 +119,11 @@ def callback_signals(data):
 	global reception
     	if data.activateRobot==1 and data.humanIsReady==0: #activateRobot signal
 		reception = 1
+
+def check_drop_now_call(data):
+	global assert_normal
+	if data.data == 1:
+		assert_normal = 1
 			#--------------------------------------------------------------------------------------------------------------------
 class ReceiveA2(smach.State): 
     def __init__(self):
@@ -123,7 +137,7 @@ class ReceiveA2(smach.State):
 	reception = 0
 	rospy.sleep(0.05)
 	rospy.Subscriber("human_signals", Human, callback_signals2) 
-	if reception == 1:
+	if reception == 1:	
 		count_timeout = 0
 		#cov.stop()
 		#cov.save()
@@ -156,8 +170,15 @@ class Move(smach.State):
     	#cov.start()	
 	#Path planning towards the piece
 	
-	trigger_drop_pathway = 2#random.randint(0, 5)
-	
+	# rospy.Subscriber('check_drop_now', Int8, check_drop_now_call)
+
+	if assert_normal == 1:	
+	 	trigger_drop_pathway = 1
+	else:	
+	 	trigger_drop_pathway = random.randint(0, 3)
+
+	# trigger_drop_pathway = 1
+
 	theplans = interface([-0.5,0.0,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
 	for i,plan in enumerate(theplans):
 		set_robot_joints(plan)		
@@ -186,12 +207,21 @@ class Move(smach.State):
 	hand2 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
 	hand2.publish(1)
 	rospy.sleep(0.1)
-	if trigger_drop_pathway == 2:
+	if trigger_drop_pathway == 1:
 		#Will I need to thread this
 		return 'outcome2'
 	#cov.stop()
 	#cov.save()
+	# dropped = rospy.Publisher('dropped_piece', Int8, queue_size=1,latch=True)
+	# dropped.publish(0)
+	# rospy.sleep(0.15)		
+	# dropped.publish(0)
+
 	return 'outcome1'
+
+# def check_drop_now_call(data):
+# 	# if data.data == 1:
+# 	assert_normal = 1
 
 #--------------------------------------------------------------------------------------------------------------------
 class Send(smach.State):
@@ -400,17 +430,16 @@ class Discard(smach.State):
 class Drop(smach.State):
     def __init__(self):
     	smach.State.__init__(self, outcomes=['outcome1'])
-    
+
     def execute(self, userdata):
     	global leg_counter
     	leg_counter = leg_counter + 1
     	move_hand('open')
-		
-	dropped = rospy.Publisher('dropped_piece', Int8, queue_size=1,latch=True)
-	dropped.publish(1)
-	rospy.sleep(0.2)
-	dropped.publish(0)
-
+	if assert_normal != 1:	
+		subprocess.Popen(["python", "/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/drop_loop_run.py", str(file_number)])
+	legDrop = rospy.Publisher('Leg_Drop', Int8, queue_size=1, latch=True)
+	legDrop.publish(1)
+	rospy.sleep(5)
         return 'outcome1'
 
 # New
@@ -462,7 +491,6 @@ class Reset_Drop(smach.State):
     	pubpiecedone.publish(0)
     	pubrel.publish(0)
     	rospy.sleep(0.2)
-	#thread.start_new_thread(execfile("/home/harrison/catkin_ws/src/run.py"))
     	if leg_counter >= 4:
     		return 'outcome2'
         return 'outcome1'
@@ -471,6 +499,8 @@ class Reset_Drop(smach.State):
 
 def main(same_seed):
 	random.seed(same_seed)
+	global file_number
+	file_number = same_seed
 	rospy.init_node('robot', anonymous=True) #Start node first
 	global timeout_time
 	timeout_time = random.randint(10, 100)

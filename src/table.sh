@@ -29,8 +29,11 @@ while [ $COUNTER -lt 131 ]; do
 	(rosrun table_simulator assertion2.py $COUNTER>> /tmp/a2out$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator assertion3.py $COUNTER>> /tmp/a3out$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator assertion4.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
+	(rosrun table_simulator assertion6.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
+	(rosrun table_simulator assertion7.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator robot.py $COUNTER>> /tmp/robotout$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator human.py abstract_test$COUNTER $COUNTER >> /tmp/humanout$COUNTER) &
+	(python /home/harrison/catkin_ws/src/GUI.py abstract_test$COUNTER $COUNTER x) &
 #	(rosrun table_simulator human.py cp_$COUNTER $COUNTER >> /tmp/humanout$COUNTER) &
 	(sleep 100; python src/table_simulator/scripts/check_code_coverage.py)
 	cat /tmp/rospids | xargs kill 

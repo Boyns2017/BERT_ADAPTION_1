@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/masterslave.py: 34%</title>
+    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/masterslave.py: 38%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/masterslave.py</b> :
-            <span class="pc_cov">34%</span>
+            <span class="pc_cov">38%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             211 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">72 run</span>
-            <span class="mis shortkey_m button_toggle_mis">139 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">80 run</span>
+            <span class="mis shortkey_m button_toggle_mis">131 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -201,7 +201,7 @@
 <p id="n132" class="stm run hide_run"><a href="#n132">132</a></p>
 <p id="n133" class="pln"><a href="#n133">133</a></p>
 <p id="n134" class="stm run hide_run"><a href="#n134">134</a></p>
-<p id="n135" class="stm mis"><a href="#n135">135</a></p>
+<p id="n135" class="stm run hide_run"><a href="#n135">135</a></p>
 <p id="n136" class="pln"><a href="#n136">136</a></p>
 <p id="n137" class="stm run hide_run"><a href="#n137">137</a></p>
 <p id="n138" class="stm mis"><a href="#n138">138</a></p>
@@ -305,16 +305,16 @@
 <p id="n236" class="pln"><a href="#n236">236</a></p>
 <p id="n237" class="pln"><a href="#n237">237</a></p>
 <p id="n238" class="pln"><a href="#n238">238</a></p>
-<p id="n239" class="stm mis"><a href="#n239">239</a></p>
-<p id="n240" class="stm mis"><a href="#n240">240</a></p>
+<p id="n239" class="stm run hide_run"><a href="#n239">239</a></p>
+<p id="n240" class="stm run hide_run"><a href="#n240">240</a></p>
 <p id="n241" class="stm mis"><a href="#n241">241</a></p>
-<p id="n242" class="stm mis"><a href="#n242">242</a></p>
+<p id="n242" class="stm run hide_run"><a href="#n242">242</a></p>
 <p id="n243" class="stm mis"><a href="#n243">243</a></p>
 <p id="n244" class="stm mis"><a href="#n244">244</a></p>
 <p id="n245" class="stm mis"><a href="#n245">245</a></p>
 <p id="n246" class="stm mis"><a href="#n246">246</a></p>
 <p id="n247" class="stm mis"><a href="#n247">247</a></p>
-<p id="n248" class="stm mis"><a href="#n248">248</a></p>
+<p id="n248" class="stm run hide_run"><a href="#n248">248</a></p>
 <p id="n249" class="pln"><a href="#n249">249</a></p>
 <p id="n250" class="stm mis"><a href="#n250">250</a></p>
 <p id="n251" class="pln"><a href="#n251">251</a></p>
@@ -567,10 +567,10 @@
 <p id="n498" class="pln"><a href="#n498">498</a></p>
 <p id="n499" class="pln"><a href="#n499">499</a></p>
 <p id="n500" class="pln"><a href="#n500">500</a></p>
-<p id="n501" class="stm mis"><a href="#n501">501</a></p>
-<p id="n502" class="stm mis"><a href="#n502">502</a></p>
+<p id="n501" class="stm run hide_run"><a href="#n501">501</a></p>
+<p id="n502" class="stm run hide_run"><a href="#n502">502</a></p>
 <p id="n503" class="stm mis"><a href="#n503">503</a></p>
-<p id="n504" class="stm mis"><a href="#n504">504</a></p>
+<p id="n504" class="stm run hide_run"><a href="#n504">504</a></p>
 <p id="n505" class="pln"><a href="#n505">505</a></p>
 <p id="n506" class="stm mis"><a href="#n506">506</a></p>
 <p id="n507" class="stm mis"><a href="#n507">507</a></p>
@@ -743,7 +743,7 @@
 <p id="t132" class="stm run hide_run">                        <span class="key">try</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t133" class="pln">                            <span class="com">#simultaneously validate + canonicalized args</span><span class="strut">&nbsp;</span></p>
 <p id="t134" class="stm run hide_run">                            <span class="key">if</span> <span class="nam">type</span><span class="op">(</span><span class="nam">v</span><span class="op">)</span> <span class="op">==</span> <span class="nam">list</span> <span class="key">or</span> <span class="nam">type</span><span class="op">(</span><span class="nam">v</span><span class="op">)</span> <span class="op">==</span> <span class="nam">tuple</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t135" class="stm mis">                                <span class="nam">newArgs</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">instance</span><span class="op">.</span><span class="nam">_custom_validate</span><span class="op">(</span><span class="nam">v</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span> <span class="nam">v</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="nam">a</span><span class="op">,</span> <span class="nam">caller_id</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t135" class="stm run hide_run">                                <span class="nam">newArgs</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">instance</span><span class="op">.</span><span class="nam">_custom_validate</span><span class="op">(</span><span class="nam">v</span><span class="op">[</span><span class="num">0</span><span class="op">]</span><span class="op">,</span> <span class="nam">v</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">,</span> <span class="nam">a</span><span class="op">,</span> <span class="nam">caller_id</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t136" class="pln">                            <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t137" class="stm run hide_run">                                <span class="nam">newArgs</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">v</span><span class="op">(</span><span class="nam">a</span><span class="op">,</span> <span class="nam">caller_id</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t138" class="stm mis">                        <span class="key">except</span> <span class="nam">ParameterInvalid</span> <span class="key">as</span> <span class="nam">e</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -847,16 +847,16 @@
 <p id="t236" class="pln"><span class="str">        @raise ParameterInvalid: if the parameter does not meet validation</span><span class="strut">&nbsp;</span></p>
 <p id="t237" class="pln"><span class="str">        @return: new value for parameter, after validation</span><span class="strut">&nbsp;</span></p>
 <p id="t238" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t239" class="stm mis">        <span class="key">if</span> <span class="nam">validation</span> <span class="op">==</span> <span class="str">'is_publishers_list'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t240" class="stm mis">            <span class="key">if</span> <span class="key">not</span> <span class="nam">type</span><span class="op">(</span><span class="nam">param_value</span><span class="op">)</span> <span class="op">==</span> <span class="nam">list</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t239" class="stm run hide_run">        <span class="key">if</span> <span class="nam">validation</span> <span class="op">==</span> <span class="str">'is_publishers_list'</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t240" class="stm run hide_run">            <span class="key">if</span> <span class="key">not</span> <span class="nam">type</span><span class="op">(</span><span class="nam">param_value</span><span class="op">)</span> <span class="op">==</span> <span class="nam">list</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t241" class="stm mis">                <span class="key">raise</span> <span class="nam">ParameterInvalid</span><span class="op">(</span><span class="str">"ERROR: param [%s] must be a list"</span><span class="op">%</span><span class="nam">param_name</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t242" class="stm mis">            <span class="key">for</span> <span class="nam">v</span> <span class="key">in</span> <span class="nam">param_value</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t242" class="stm run hide_run">            <span class="key">for</span> <span class="nam">v</span> <span class="key">in</span> <span class="nam">param_value</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t243" class="stm mis">                <span class="key">if</span> <span class="key">not</span> <span class="nam">isinstance</span><span class="op">(</span><span class="nam">v</span><span class="op">,</span> <span class="nam">str</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t244" class="stm mis">                    <span class="key">raise</span> <span class="nam">ParameterInvalid</span><span class="op">(</span><span class="str">"ERROR: param [%s] must be a list of strings"</span><span class="op">%</span><span class="nam">param_name</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t245" class="stm mis">                <span class="nam">parsed</span> <span class="op">=</span> <span class="nam">urlparse</span><span class="op">.</span><span class="nam">urlparse</span><span class="op">(</span><span class="nam">v</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t246" class="stm mis">                <span class="key">if</span> <span class="key">not</span> <span class="nam">parsed</span><span class="op">[</span><span class="num">0</span><span class="op">]</span> <span class="key">or</span> <span class="key">not</span> <span class="nam">parsed</span><span class="op">[</span><span class="num">1</span><span class="op">]</span><span class="op">:</span> <span class="com">#protocol and host</span><span class="strut">&nbsp;</span></p>
 <p id="t247" class="stm mis">                    <span class="key">raise</span> <span class="nam">ParameterInvalid</span><span class="op">(</span><span class="str">"ERROR: param [%s] does not contain valid URLs [%s]"</span><span class="op">%</span><span class="op">(</span><span class="nam">param_name</span><span class="op">,</span> <span class="nam">v</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t248" class="stm mis">            <span class="key">return</span> <span class="nam">param_value</span><span class="strut">&nbsp;</span></p>
+<p id="t248" class="stm run hide_run">            <span class="key">return</span> <span class="nam">param_value</span><span class="strut">&nbsp;</span></p>
 <p id="t249" class="pln">        <span class="key">else</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t250" class="stm mis">            <span class="key">raise</span> <span class="nam">ParameterInvalid</span><span class="op">(</span><span class="str">"ERROR: param [%s] has an unknown validation type [%s]"</span><span class="op">%</span><span class="op">(</span><span class="nam">param_name</span><span class="op">,</span> <span class="nam">validation</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t251" class="pln"><span class="strut">&nbsp;</span></p>
@@ -1109,10 +1109,10 @@
 <p id="t498" class="pln"><span class="str">        @return: [code, status, ignore]</span><span class="strut">&nbsp;</span></p>
 <p id="t499" class="pln"><span class="str">        @rtype: [int, str, int]</span><span class="strut">&nbsp;</span></p>
 <p id="t500" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t501" class="stm mis">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">reg_man</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t502" class="stm mis">            <span class="key">for</span> <span class="nam">uri</span> <span class="key">in</span> <span class="nam">publishers</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t501" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">reg_man</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t502" class="stm run hide_run">            <span class="key">for</span> <span class="nam">uri</span> <span class="key">in</span> <span class="nam">publishers</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t503" class="stm mis">                <span class="nam">self</span><span class="op">.</span><span class="nam">reg_man</span><span class="op">.</span><span class="nam">publisher_update</span><span class="op">(</span><span class="nam">topic</span><span class="op">,</span> <span class="nam">publishers</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t504" class="stm mis">        <span class="key">return</span> <span class="num">1</span><span class="op">,</span> <span class="str">""</span><span class="op">,</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
+<p id="t504" class="stm run hide_run">        <span class="key">return</span> <span class="num">1</span><span class="op">,</span> <span class="str">""</span><span class="op">,</span> <span class="num">0</span><span class="strut">&nbsp;</span></p>
 <p id="t505" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t506" class="stm mis">    <span class="nam">_remap_table</span><span class="op">[</span><span class="str">'requestTopic'</span><span class="op">]</span> <span class="op">=</span> <span class="op">[</span><span class="num">0</span><span class="op">]</span> <span class="com"># remap topic </span><span class="strut">&nbsp;</span></p>
 <p id="t507" class="stm mis">    <span class="op">@</span><span class="nam">apivalidate</span><span class="op">(</span><span class="op">[</span><span class="op">]</span><span class="op">,</span> <span class="op">(</span><span class="nam">is_topic</span><span class="op">(</span><span class="str">'topic'</span><span class="op">)</span><span class="op">,</span> <span class="nam">non_empty</span><span class="op">(</span><span class="str">'protocols'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
@@ -1158,7 +1158,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-08-15 14:03
+            created at 2018-08-19 22:06
         </p>
     </div>
 </div>

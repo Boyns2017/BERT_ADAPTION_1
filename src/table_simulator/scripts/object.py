@@ -28,11 +28,13 @@ drop = 0
 def main():
 	rospy.init_node('object', anonymous=True)
 	#Initial location (reset)	
-	setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
+	setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
 	setmodel(ModelState('object',Pose(Point(0.0,0.0,0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	#Run loop for all the simulation time length
 	while not rospy.is_shutdown():
+
 		rospy.sleep(0.01)
+
     		rospy.Subscriber('robot_has_piece', Int8,correct_gazebo)
     		if correction == 0:
     			getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
@@ -58,7 +60,8 @@ def main():
 		# 	piece.publish(data.pose.position.x+0.3,data.pose.position.y-0.3,data.pose.position.z+0.555)
 		print str(data.pose.position.x+0.3)+','+str(data.pose.position.y-0.3)+','+str(data.pose.position.z+0.555)
 		rospy.Subscriber('resetpiece', Int8, reset)
-		rospy.Subscriber('dropped_piece', Int8, dropped_it)	
+		rospy.Subscriber('Leg_Drop', Int8, dropped_it)
+		# rospy.Subscriber('dropped_piece', Int8, dropped_it)	
     			
 def correct_gazebo(data):
 	global correction
@@ -69,7 +72,6 @@ def correct_gazebo(data):
 		
 def reset(data):
 	if data.data == 1:
-		print "RESET NOW"	
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(0.0,0.0,0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	
@@ -77,18 +79,13 @@ def dropped_it(data):
 	global drop
 	if data.data == 1:
 		drop = 1
-		print("Dropped it!!")	
+		print "Dropped it like a rhythmstick ooo yeah"
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(1.0, 0.0, 0.0000),Quaternion(0.0,0.0,0.0,0.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-		find_it = rospy.Publisher('dropped_location', Location,  queue_size=1,latch=True)
-		x = 0.20
-		y = 0.05
-		z = -0.2
-		find_it.publish(x,y,z)
-		print "find_it"
 		rospy.sleep(1)
 	else:
 		drop = 0
+		
 if __name__ == '__main__':
 	try:
 		main()

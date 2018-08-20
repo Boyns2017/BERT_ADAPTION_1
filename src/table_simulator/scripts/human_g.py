@@ -35,6 +35,7 @@ def move_hand(data):
 	gx = x-1.15
 	gy = y+0.43
 	gz = z-0.73
+	print "In move hand object at correct position"
 	setmodel2 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 	setmodel2(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 
@@ -42,7 +43,7 @@ def move_hand_object(data):
 	gx = data.x
 	gy = data.y
 	gz = data.z
-	print "In move hand"
+	print "In move hand to dropped object"
 	setmodel2 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 	setmodel2(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	
@@ -53,10 +54,14 @@ def reset_head_hand():
 	setmodel(ModelState('human_hand',Pose(Point(0.0,0.0,0.0),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	
 def reset_head_hand2(data):
-	setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
-	setmodel(ModelState('human_head',Pose(Point(0.0,0.0,0.0),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-	setmodel(ModelState('human_hand',Pose(Point(0.0,0.0,0.0),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-	
+	if data.data == 1:
+		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
+		setmodel(ModelState('human_head',Pose(Point(0.0,0.0,0.0),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
+		setmodel(ModelState('human_hand',Pose(Point(0.0,0.0,0.0),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
+
+def printCheck(data):
+	if data == 1:
+		print "He is inside!!! REMEMBER HE IS INSIDE"
 	
 def main():
 	rospy.init_node('human_gazebo_controller', anonymous=True)
@@ -71,7 +76,9 @@ def main():
 		rospy.Subscriber("gaze", Gaze, move_head)
 		rospy.Subscriber("dropped_location", Location, move_hand_object)
 		rospy.sleep(0.005)
-		rospy.Subscriber("reset_human", Int8, reset_head_hand2)
+		rospy.Subscriber("reset_human", Int8, reset_head_hand)
+		rospy.Subscriber('check_Drop', Int8, printCheck)
+
 		
 #--------------------------------------------------------------------------------------
 if __name__ == '__main__':

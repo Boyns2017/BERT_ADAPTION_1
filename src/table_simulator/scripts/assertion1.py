@@ -48,7 +48,7 @@ class Flag2(smach.State):
     def execute(self, userdata):
 	global receivedflag2
 	global start
-	global stats
+#	global stats
 	receivedflag2 = 0
 	rospy.sleep(0.01)
 	rospy.Subscriber("legdone", Int8, callback2)
@@ -57,7 +57,7 @@ class Flag2(smach.State):
 			
 			stats.write('Assertion 1 at test '+ str(fileno) +': Passed at global time '+ str(time.time()-globaltime) +'\n')
 		else:
-			global stats
+#			global stats
 			stats.write('Assertion 1 at test '+ str(fileno) +': Failed at global time '+ str(time.time()-globaltime) +'\n')
 		return 'outcome1'
 		receivedflag2 = 0

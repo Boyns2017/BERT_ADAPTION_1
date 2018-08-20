@@ -14,7 +14,9 @@ import smach_ros
 import re
 import os
 import math
+import subprocess
 import random
+import thread
 from table_simulator.msg import *
 from gazebo_msgs.srv import SetModelState
 from gazebo_msgs.msg import ModelState
@@ -32,7 +34,8 @@ from concrete_gen import one_n_mapping_location
 
 instructions=[]
 reception=0
-
+leg_break = 0
+drop_timer_decider = 0
 
 
 #--------------------------------------------------------------------------------------------------------
@@ -40,7 +43,7 @@ class SendA1(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['outcome1'])
 
-    def execute(self, userdata):
+    def execute(self, userdata):	    
         h_signaling = rospy.Publisher('human_voice_a1', Int8, queue_size=1, latch=True) 
 	h_signaling.publish(1) 
 	rospy.sleep(3)
@@ -67,11 +70,14 @@ class Receive(smach.State):
         smach.State.__init__(self, outcomes=['outcome1','outcome2'])
 
     def execute(self, userdata):
+
 	global reception
-	reception = 0
+
 	rospy.sleep(0.2)
+
 	rospy.Subscriber("robot_signals", Robot, callback)
-	if reception == 1:
+
+	if reception in (1, 2):
 		return 'outcome1'
 	else:
 		return 'outcome2'
@@ -81,6 +87,11 @@ def callback(data):
 	global reception
 	if data.informedHuman == 1:
 		reception = 1
+	elif data.informedHuman == 2:
+		reception == 2
+	else:
+		reception = 0
+
 
 #--------------------------------------------------------------------------------------------------------
 class Gaze0(smach.State):
@@ -156,9 +167,22 @@ class Dropped(smach.State):
         smach.State.__init__(self, outcomes=['outcome1'])
         
     def execute(self, userdata):
-    	print 'Leg Has Been Dropped'
-	print "Human knows this"
-    	rospy.sleep(0.1)
+
+	human_up = rospy.Publisher('check_drop_now', Int8,  queue_size=1,latch=True)
+	human_up.publish(1)		
+    	
+	rospy.sleep(10)	
+
+	human_up = rospy.Publisher('pick_up', Int8,  queue_size=1,latch=True)
+	human_up.publish(1)		
+	rospy.sleep(0.2)
+	human_up.publish(0)
+
+	check_Drop = rospy.Publisher('check_Drop', Int8, queue_size=1, latch=True)
+	check_Drop.publish(1)
+	rospy.sleep(0.1)
+	check_Drop.publish(0)
+    
 	return 'outcome1'
 
 #----------------------------------------------------------------------------------------------------------
@@ -168,7 +192,6 @@ class Waits(smach.State):
 	# Need to extend number of outcomes here to accomdate the calculation ie is it too far or close
     def execute(self, userdata):
 	print "Waits"
-    	rospy.sleep(4)
 	return 'outcome1'
 
 #----------------------------------------------------------------------------------------------------------
@@ -184,13 +207,25 @@ class Left_It(smach.State):
 class Picks_It_Up(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['outcome1'])
-	# Need to extend number of outcomes here to accomdate the calculation ie is it too far or close
 
     def execute(self, userdata):
-	print "Leaves"	
-    	rospy.sleep(0.1)	
+	print "Leaves"
+
+	rospy.sleep(7)
+
+	find_it = rospy.Publisher('dropped_location', Location,  queue_size=1,latch=True)
+	x = 0.20
+	y = 0.05
+	z = -0.2
+	find_it.publish(x,y,z)	
+
+	human_up = rospy.Publisher('pick_up', Int8,  queue_size=1,latch=True)
+	human_up.publish(1)		
+	rospy.sleep(0.2)
+	human_up.publish(0)
+
 	return 'outcome1'
-	
+
 #-----------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
 def main(name_file,xx):
@@ -202,12 +237,9 @@ def main(name_file,xx):
 	#Create machine by reading instruction list
 	global instructions
 	global data
-	# if name_file == 'abstract_test129.txt':
-	# 	folder = 'test_folder'
-	# else:
-	# 	folder = 'abstract_tests'	
+#	thread.start_new_thread(subprocess.call(['python', '/home/harrison/catkin_ws/src/GUI.py', name_file, xx]))
 
-	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/test_folder/'+name_file+'.txt','r')): 
+	for num,command in enumerate(open(os.getcwd()+'/src/table_simulator/scripts/abstract_tests/'+name_file+'.txt','r')): 
 		if re.search("Robot_does_not_notice",command): #if the command is to send a signal
 			instructions.append('Robot_does_not_notice')
  		elif re.search("Leg_Dropped",command):
@@ -273,7 +305,7 @@ def main(name_file,xx):
 		elif instructions[i] == 'receivesignal_react':
 			if instructions[i+1] == 'Leg_Dropped':
 				smach.StateMachine.add('receivesignal_react'+str(i), Receive(), 
-		                transitions={'outcome1':'Leg_Dropped'+str(i+1), 'outcome2':'receivesignal_react'+str(i)})
+		                transitions={'outcome1':'receivesignal_react'+str(i),'outcome2':'Leg_Dropped'+str(i+1)})
 		elif instructions[i] == 'Leg_Dropped':
 			if instructions[i+1] == 'human_waits':
 				smach.StateMachine.add('Leg_Dropped'+str(i), Dropped(), 
@@ -688,7 +720,7 @@ def main(name_file,xx):
 #------------------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
 	try:
-		main(sys.argv[1],sys.argv[2])
+		main(sys.argv[1], sys.argv[2])
 	except rospy.ROSInterruptException: #to stop the code when pressing Ctr+c
 	
 		pass
