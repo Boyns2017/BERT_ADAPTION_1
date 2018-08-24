@@ -201,7 +201,9 @@ class Left_It(smach.State):
 	# Need to extend number of outcomes here to accomdate the calculation ie is it too far or close
     def execute(self, userdata):
 	print "Leaves"	
-    	rospy.sleep(0.1)	
+    	rospy.sleep(0.1)
+	leaves = rospy.Publisher('human_left_it', Location,  queue_size=1,latch=True)
+	leaves.publish(1)	
 	return 'outcome1'
 #----------------------------------------------------------------------------------------------------------
 class Picks_It_Up(smach.State):

@@ -31,6 +31,7 @@ while [ $COUNTER -lt 131 ]; do
 	(rosrun table_simulator assertion4.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator assertion6.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator assertion7.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
+	(rosrun table_simulator assertion8.py $COUNTER>> /tmp/a4out$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator robot.py $COUNTER>> /tmp/robotout$COUNTER & echo $! >> /tmp/rospids) &
 	(rosrun table_simulator human.py abstract_test$COUNTER $COUNTER >> /tmp/humanout$COUNTER) &
 	(python /home/harrison/catkin_ws/src/GUI.py abstract_test$COUNTER $COUNTER x) &

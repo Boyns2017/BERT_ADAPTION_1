@@ -1,4 +1,0 @@
-bored
-bored
-set_param location = 1
-set_param location = 1

@@ -35,7 +35,7 @@ def move_hand(data):
 	gx = x-1.15
 	gy = y+0.43
 	gz = z-0.73
-	print "In move hand object at correct position"
+	print "Correct"
 	setmodel2 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 	setmodel2(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 
@@ -43,9 +43,9 @@ def move_hand_object(data):
 	gx = data.x
 	gy = data.y
 	gz = data.z
-	print "In move hand to dropped object"
-	setmodel2 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
-	setmodel2(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
+	print "False"
+	setmodel3 = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
+	setmodel3(ModelState('human_hand',Pose(Point(gx,gy,gz),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
 	
 
 def reset_head_hand():

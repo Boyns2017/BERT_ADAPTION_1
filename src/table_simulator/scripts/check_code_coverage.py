@@ -13,7 +13,7 @@ import robot
 import os
 import re
 
-
+the_line = 0
 overhead = 77
 
 #Discount classes (smach) -> 3 lines each
@@ -29,10 +29,10 @@ for name, obj in inspect.getmembers(robot):
 		functions_number+=1
 
 #Get statistics from html reports
-for i, line in enumerate(open('/home/dejanira/catkin_ws/covhtml/src_table_simulator_scripts_robot_py.html', 'r')): 
+for i, line in enumerate(open('/home/harrison/catkin_ws/covhtml/src_table_simulator_scripts_robot_py.html', 'r')): 
 	for match in re.finditer("        <h2 class='stats'>",line):
 		the_line = i+1
-for i, line in enumerate(open('/home/dejanira/catkin_ws/covhtml/src_table_simulator_scripts_robot_py.html', 'r')): 
+for i, line in enumerate(open('/home/harrison/catkin_ws/covhtml/src_table_simulator_scripts_robot_py.html', 'r')): 
 	if i==the_line:
 		number = re.split("statements &nbsp;", line)
 	if i==the_line+1:

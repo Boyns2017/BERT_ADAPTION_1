@@ -74,18 +74,13 @@ def reset(data):
 	if data.data == 1:
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(0.0,0.0,0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-	
+		
 def dropped_it(data):
-	global drop
 	if data.data == 1:
-		drop = 1
 		print "Dropped it like a rhythmstick ooo yeah"
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(1.0, 0.0, 0.0000),Quaternion(0.0,0.0,0.0,0.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-		rospy.sleep(1)
-	else:
-		drop = 0
-		
+
 if __name__ == '__main__':
 	try:
 		main()
