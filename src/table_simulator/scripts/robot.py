@@ -434,8 +434,8 @@ class Drop(smach.State):
     	global leg_counter
     	leg_counter = leg_counter + 1
     	move_hand('open')
-	#if assert_normal != 1:	
-		#subprocess.Popen(["python", "/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/drop_loop_run.py", str(file_number)])
+	# if assert_normal != 1:	
+	#  	subprocess.Popen(["python", "/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/drop_loop_run.py", str(file_number)])
 	legDrop = rospy.Publisher('Leg_Drop', Int8, queue_size=1, latch=True)
 	legDrop.publish(1)
 	rospy.sleep(1)

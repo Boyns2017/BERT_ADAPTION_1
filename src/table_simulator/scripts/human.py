@@ -173,11 +173,6 @@ class Dropped(smach.State):
     	
 	rospy.sleep(10)	
 
-	human_up = rospy.Publisher('pick_up', Int8,  queue_size=1,latch=True)
-	human_up.publish(1)		
-	rospy.sleep(0.2)
-	human_up.publish(0)
-
 	check_Drop = rospy.Publisher('check_Drop', Int8, queue_size=1, latch=True)
 	check_Drop.publish(1)
 	rospy.sleep(0.1)
@@ -202,8 +197,9 @@ class Left_It(smach.State):
     def execute(self, userdata):
 	print "Leaves"	
     	rospy.sleep(0.1)
-	leaves = rospy.Publisher('human_left_it', Location,  queue_size=1,latch=True)
-	leaves.publish(1)	
+	leaves = rospy.Publisher('human_left_it', Int8,  queue_size=1,latch=True)
+	leaves.publish(1)
+	rospy.sleep(2)
 	return 'outcome1'
 #----------------------------------------------------------------------------------------------------------
 class Picks_It_Up(smach.State):
@@ -223,9 +219,7 @@ class Picks_It_Up(smach.State):
 
 	human_up = rospy.Publisher('pick_up', Int8,  queue_size=1,latch=True)
 	human_up.publish(1)		
-	rospy.sleep(0.2)
-	human_up.publish(0)
-
+	rospy.sleep(2)
 	return 'outcome1'
 
 #-----------------------------------------------------------------------------------------

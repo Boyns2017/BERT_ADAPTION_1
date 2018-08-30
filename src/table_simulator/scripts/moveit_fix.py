@@ -10,7 +10,7 @@ def main():
     ## Mapping /bert2/joint_states to /joint_states, where the move_group node expects to read joint states.
     ## As suggested at https://groups.google.com/a/rethinkrobotics.com/forum/#!msg/brr-users/P890sqFxpBo/7DSF_cOcUC8J
 
-    p = rospy.Publisher('/joint_states', sensor_msgs.msg.JointState, queue_size=1, latch=True)
+    p = rospy.Publisher('joint_states', sensor_msgs.msg.JointState, queue_size=1, latch=True)
     s = rospy.Subscriber('/bert2/joint_states', sensor_msgs.msg.JointState, p.publish, queue_size=3)
 
 

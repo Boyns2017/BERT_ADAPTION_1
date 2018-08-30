@@ -1,0 +1,28 @@
+Considered statements:320
+Missing statements:139
+Covered percentage:56%
+-------------------
+Considered statements:331
+Missing statements:294
+Covered percentage:11%
+-------------------
+Considered statements:331
+Missing statements:294
+Covered percentage:11%
+-------------------
+Considered statements:331
+Missing statements:294
+Covered percentage:11%
+-------------------
+Considered statements:331
+Missing statements:294
+Covered percentage:11%
+-------------------
+Considered statements:320
+Missing statements:118
+Covered percentage:63%
+-------------------
+Considered statements:320
+Missing statements:118
+Covered percentage:63%
+-------------------

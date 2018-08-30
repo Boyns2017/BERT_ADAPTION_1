@@ -57,8 +57,8 @@ class Flag2(smach.State):
 	global receivedflag2
 	global start
 #	global stats
-	receivedflag2 = 0
 	rospy.sleep(0.01)
+	receivedflag2 = 0	
 	rospy.Subscriber("human_left_it", Int8, callback2)
 	if receivedflag2 == 1:
 		stats.write('Assertion 1 at test '+ str(fileno) +': Passed at global time '+ str(time.time()-globaltime) +'\n')

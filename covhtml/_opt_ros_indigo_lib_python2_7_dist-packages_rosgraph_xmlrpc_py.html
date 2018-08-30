@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/xmlrpc.py: 14%</title>
+    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/xmlrpc.py: 7%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/xmlrpc.py</b> :
-            <span class="pc_cov">14%</span>
+            <span class="pc_cov">7%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             138 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">19 run</span>
-            <span class="mis shortkey_m button_toggle_mis">119 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">9 run</span>
+            <span class="mis shortkey_m button_toggle_mis">129 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -253,16 +253,16 @@
 <p id="n184" class="pln"><a href="#n184">184</a></p>
 <p id="n185" class="pln"><a href="#n185">185</a></p>
 <p id="n186" class="pln"><a href="#n186">186</a></p>
-<p id="n187" class="stm run hide_run"><a href="#n187">187</a></p>
-<p id="n188" class="stm run hide_run"><a href="#n188">188</a></p>
-<p id="n189" class="stm run hide_run"><a href="#n189">189</a></p>
-<p id="n190" class="stm run hide_run"><a href="#n190">190</a></p>
-<p id="n191" class="stm run hide_run"><a href="#n191">191</a></p>
-<p id="n192" class="stm run hide_run"><a href="#n192">192</a></p>
-<p id="n193" class="stm run hide_run"><a href="#n193">193</a></p>
-<p id="n194" class="stm run hide_run"><a href="#n194">194</a></p>
-<p id="n195" class="stm run hide_run"><a href="#n195">195</a></p>
-<p id="n196" class="stm run hide_run"><a href="#n196">196</a></p>
+<p id="n187" class="stm mis"><a href="#n187">187</a></p>
+<p id="n188" class="stm mis"><a href="#n188">188</a></p>
+<p id="n189" class="stm mis"><a href="#n189">189</a></p>
+<p id="n190" class="stm mis"><a href="#n190">190</a></p>
+<p id="n191" class="stm mis"><a href="#n191">191</a></p>
+<p id="n192" class="stm mis"><a href="#n192">192</a></p>
+<p id="n193" class="stm mis"><a href="#n193">193</a></p>
+<p id="n194" class="stm mis"><a href="#n194">194</a></p>
+<p id="n195" class="stm mis"><a href="#n195">195</a></p>
+<p id="n196" class="stm mis"><a href="#n196">196</a></p>
 <p id="n197" class="pln"><a href="#n197">197</a></p>
 <p id="n198" class="stm mis"><a href="#n198">198</a></p>
 <p id="n199" class="pln"><a href="#n199">199</a></p>
@@ -553,16 +553,16 @@
 <p id="t184" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t185" class="pln"><span class="str">        :param reason: human-readable debug string, ``str``</span><span class="strut">&nbsp;</span></p>
 <p id="t186" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t187" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">is_shutdown</span> <span class="op">=</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
-<p id="t188" class="stm run hide_run">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">server</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t189" class="stm run hide_run">            <span class="nam">server</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">server</span><span class="strut">&nbsp;</span></p>
-<p id="t190" class="stm run hide_run">            <span class="nam">handler</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">handler</span><span class="strut">&nbsp;</span></p>
-<p id="t191" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">handler</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">server</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">port</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">uri</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
-<p id="t192" class="stm run hide_run">            <span class="key">if</span> <span class="nam">handler</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t193" class="stm run hide_run">                <span class="nam">handler</span><span class="op">.</span><span class="nam">_shutdown</span><span class="op">(</span><span class="nam">reason</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t194" class="stm run hide_run">            <span class="key">if</span> <span class="nam">server</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t195" class="stm run hide_run">                <span class="nam">server</span><span class="op">.</span><span class="nam">socket</span><span class="op">.</span><span class="nam">close</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t196" class="stm run hide_run">                <span class="nam">server</span><span class="op">.</span><span class="nam">server_close</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t187" class="stm mis">        <span class="nam">self</span><span class="op">.</span><span class="nam">is_shutdown</span> <span class="op">=</span> <span class="nam">True</span><span class="strut">&nbsp;</span></p>
+<p id="t188" class="stm mis">        <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">server</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t189" class="stm mis">            <span class="nam">server</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">server</span><span class="strut">&nbsp;</span></p>
+<p id="t190" class="stm mis">            <span class="nam">handler</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">handler</span><span class="strut">&nbsp;</span></p>
+<p id="t191" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">handler</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">server</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">port</span> <span class="op">=</span> <span class="nam">self</span><span class="op">.</span><span class="nam">uri</span> <span class="op">=</span> <span class="nam">None</span><span class="strut">&nbsp;</span></p>
+<p id="t192" class="stm mis">            <span class="key">if</span> <span class="nam">handler</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t193" class="stm mis">                <span class="nam">handler</span><span class="op">.</span><span class="nam">_shutdown</span><span class="op">(</span><span class="nam">reason</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t194" class="stm mis">            <span class="key">if</span> <span class="nam">server</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t195" class="stm mis">                <span class="nam">server</span><span class="op">.</span><span class="nam">socket</span><span class="op">.</span><span class="nam">close</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t196" class="stm mis">                <span class="nam">server</span><span class="op">.</span><span class="nam">server_close</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t197" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t198" class="stm mis">    <span class="key">def</span> <span class="nam">start</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t199" class="pln">        <span class="str">"""</span><span class="strut">&nbsp;</span></p>
@@ -674,7 +674,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-08-19 14:44
+            created at 2018-08-11 18:58
         </p>
     </div>
 </div>
