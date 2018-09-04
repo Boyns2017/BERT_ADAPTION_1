@@ -26,3 +26,33 @@ Considered statements:320
 Missing statements:118
 Covered percentage:63%
 -------------------
+Considered statements:320
+Missing statements:118
+Covered percentage:63%
+-------------------
+Considered statements:320
+Missing statements:207
+Covered percentage:35%
+-------------------
+Considered statements:320
+Missing statements:207
+Covered percentage:35%
+-------------------
+Error: could not open file: /home/harrison/catkin_ws/src/table_simulator/scripts/home/nm/catkin_ws/covhtml/src_table_simulator_scripts_robot_py.html
+-------------------
+Considered statements:322
+Missing statements:171
+Covered percentage:46%
+-------------------
+Considered statements:322
+Missing statements:171
+Covered percentage:46%
+-------------------
+Considered statements:322
+Missing statements:171
+Covered percentage:46%
+-------------------
+Considered statements:322
+Missing statements:171
+Covered percentage:46%
+-------------------

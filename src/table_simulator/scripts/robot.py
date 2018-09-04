@@ -178,7 +178,6 @@ class Move(smach.State):
 	 	trigger_drop_pathway = random.randint(0, 10)
 
 	# trigger_drop_pathway = 1
-
 	theplans = interface([-0.5,0.0,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
 	for i,plan in enumerate(theplans):
 		set_robot_joints(plan)		
@@ -203,20 +202,15 @@ class Move(smach.State):
 	#print theplans
 	for i,plan in enumerate(theplans):
 		set_robot_joints(plan)
+
 	rospy.sleep(1)
 	hand2 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
 	hand2.publish(1)
 	rospy.sleep(0.1)
 	if trigger_drop_pathway == 1:
 		return 'outcome2'
-	#cov.stop()
-	#cov.save()
-	# dropped = rospy.Publisher('dropped_piece', Int8, queue_size=1,latch=True)
-	# dropped.publish(0)
-	# rospy.sleep(0.15)		
-	# dropped.publish(0)
-
-	return 'outcome1'
+	else:
+		return 'outcome1'
 
 # def check_drop_now_call(data):
 # 	# if data.data == 1:
@@ -434,8 +428,8 @@ class Drop(smach.State):
     	global leg_counter
     	leg_counter = leg_counter + 1
     	move_hand('open')
-	# if assert_normal != 1:	
-	#  	subprocess.Popen(["python", "/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/drop_loop_run.py", str(file_number)])
+	if assert_normal != 1:	
+	 	subprocess.Popen(["python", "/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/drop_loop_run.py", str(file_number)])
 	legDrop = rospy.Publisher('Leg_Drop', Int8, queue_size=1, latch=True)
 	legDrop.publish(1)
 	rospy.sleep(1)

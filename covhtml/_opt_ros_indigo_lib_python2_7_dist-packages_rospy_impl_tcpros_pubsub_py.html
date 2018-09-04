@@ -8,7 +8,7 @@
     
     
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py: 49%</title>
+    <title>Coverage for /opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py: 51%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -24,15 +24,15 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py</b> :
-            <span class="pc_cov">49%</span>
+            <span class="pc_cov">51%</span>
         </h1>
 
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
 
         <h2 class="stats">
             174 statements &nbsp;
-            <span class="run hide_run shortkey_r button_toggle_run">85 run</span>
-            <span class="mis shortkey_m button_toggle_mis">89 missing</span>
+            <span class="run hide_run shortkey_r button_toggle_run">89 run</span>
+            <span class="mis shortkey_m button_toggle_mis">85 missing</span>
             <span class="exc shortkey_x button_toggle_exc">0 excluded</span>
 
             
@@ -290,7 +290,7 @@
 <p id="n221" class="pln"><a href="#n221">221</a></p>
 <p id="n222" class="pln"><a href="#n222">222</a></p>
 <p id="n223" class="pln"><a href="#n223">223</a></p>
-<p id="n224" class="stm mis"><a href="#n224">224</a></p>
+<p id="n224" class="stm run hide_run"><a href="#n224">224</a></p>
 <p id="n225" class="pln"><a href="#n225">225</a></p>
 <p id="n226" class="stm mis"><a href="#n226">226</a></p>
 <p id="n227" class="pln"><a href="#n227">227</a></p>
@@ -387,7 +387,7 @@
 <p id="n318" class="pln"><a href="#n318">318</a></p>
 <p id="n319" class="pln"><a href="#n319">319</a></p>
 <p id="n320" class="stm run hide_run"><a href="#n320">320</a></p>
-<p id="n321" class="stm mis"><a href="#n321">321</a></p>
+<p id="n321" class="stm run hide_run"><a href="#n321">321</a></p>
 <p id="n322" class="stm run hide_run"><a href="#n322">322</a></p>
 <p id="n323" class="stm run hide_run"><a href="#n323">323</a></p>
 <p id="n324" class="stm mis"><a href="#n324">324</a></p>
@@ -463,8 +463,8 @@
 <p id="n394" class="stm run hide_run"><a href="#n394">394</a></p>
 <p id="n395" class="pln"><a href="#n395">395</a></p>
 <p id="n396" class="stm mis"><a href="#n396">396</a></p>
-<p id="n397" class="stm mis"><a href="#n397">397</a></p>
-<p id="n398" class="stm mis"><a href="#n398">398</a></p>
+<p id="n397" class="stm run hide_run"><a href="#n397">397</a></p>
+<p id="n398" class="stm run hide_run"><a href="#n398">398</a></p>
 <p id="n399" class="pln"><a href="#n399">399</a></p>
 <p id="n400" class="stm mis"><a href="#n400">400</a></p>
 <p id="n401" class="stm run hide_run"><a href="#n401">401</a></p>
@@ -731,7 +731,7 @@
 <p id="t221" class="pln">        <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t222" class="pln"><span class="str">        stops the TCP/IP server responsible for receiving inbound connections        </span><span class="strut">&nbsp;</span></p>
 <p id="t223" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
-<p id="t224" class="stm mis">        <span class="key">pass</span><span class="strut">&nbsp;</span></p>
+<p id="t224" class="stm run hide_run">        <span class="key">pass</span><span class="strut">&nbsp;</span></p>
 <p id="t225" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t226" class="stm mis">    <span class="key">def</span> <span class="nam">create_transport</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">resolved_name</span><span class="op">,</span> <span class="nam">pub_uri</span><span class="op">,</span> <span class="nam">protocol_params</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t227" class="pln">        <span class="str">"""</span><span class="strut">&nbsp;</span></p>
@@ -828,7 +828,7 @@
 <p id="t318" class="pln"><span class="str">        @rtype: str</span><span class="strut">&nbsp;</span></p>
 <p id="t319" class="pln"><span class="str">        """</span><span class="strut">&nbsp;</span></p>
 <p id="t320" class="stm run hide_run">        <span class="key">if</span> <span class="nam">rospy</span><span class="op">.</span><span class="nam">core</span><span class="op">.</span><span class="nam">is_shutdown_requested</span><span class="op">(</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t321" class="stm mis">            <span class="key">return</span> <span class="str">"Node is shutting down"</span><span class="strut">&nbsp;</span></p>
+<p id="t321" class="stm run hide_run">            <span class="key">return</span> <span class="str">"Node is shutting down"</span><span class="strut">&nbsp;</span></p>
 <p id="t322" class="stm run hide_run">        <span class="key">for</span> <span class="nam">required</span> <span class="key">in</span> <span class="op">[</span><span class="str">'topic'</span><span class="op">,</span> <span class="str">'md5sum'</span><span class="op">,</span> <span class="str">'callerid'</span><span class="op">]</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t323" class="stm run hide_run">            <span class="key">if</span> <span class="key">not</span> <span class="nam">required</span> <span class="key">in</span> <span class="nam">header</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t324" class="stm mis">                <span class="key">return</span> <span class="str">"Missing required '%s' field"</span><span class="op">%</span><span class="nam">required</span><span class="strut">&nbsp;</span></p>
@@ -904,8 +904,8 @@
 <p id="t394" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">_thread</span><span class="op">.</span><span class="nam">start</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t395" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t396" class="stm mis">    <span class="key">def</span> <span class="nam">_closed_connection_callback</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">connection</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t397" class="stm mis">        <span class="key">with</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_lock</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t398" class="stm mis">            <span class="nam">self</span><span class="op">.</span><span class="nam">_cond_data_available</span><span class="op">.</span><span class="nam">notify</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t397" class="stm run hide_run">        <span class="key">with</span> <span class="nam">self</span><span class="op">.</span><span class="nam">_lock</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t398" class="stm run hide_run">            <span class="nam">self</span><span class="op">.</span><span class="nam">_cond_data_available</span><span class="op">.</span><span class="nam">notify</span><span class="op">(</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t399" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t400" class="stm mis">    <span class="key">def</span> <span class="nam">__getattr__</span><span class="op">(</span><span class="nam">self</span><span class="op">,</span> <span class="nam">name</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t401" class="stm run hide_run">        <span class="key">if</span> <span class="nam">name</span><span class="op">.</span><span class="nam">startswith</span><span class="op">(</span><span class="str">'__'</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
@@ -956,7 +956,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-08-30 13:23
+            created at 2018-09-02 19:41
         </p>
     </div>
 </div>
