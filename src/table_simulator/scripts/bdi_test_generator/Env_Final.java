@@ -1,4 +1,5 @@
 // Environment code for project Reactive_BDI_Env.mas2j
+// Edited by Harrison Boyns 2018
 
 import jason.asSyntax.*;
 import jason.environment.*;

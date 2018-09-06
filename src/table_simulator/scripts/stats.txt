@@ -56,3 +56,7 @@ Considered statements:322
 Missing statements:171
 Covered percentage:46%
 -------------------
+Considered statements:322
+Missing statements:171
+Covered percentage:46%
+-------------------

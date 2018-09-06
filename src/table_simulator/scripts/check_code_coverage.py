@@ -3,6 +3,9 @@
 """
 
 Written by Dejanira Araiza-Illan, May 2015
+
+Extended and integrated by Harrison Boyns 2018
+
 """
 
 import rospy

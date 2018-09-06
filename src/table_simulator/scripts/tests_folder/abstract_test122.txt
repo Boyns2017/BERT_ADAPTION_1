@@ -1,5 +1,0 @@
-inform_leg_begin
-React
-Leg_Dropped
-human_waits
-human_left_it

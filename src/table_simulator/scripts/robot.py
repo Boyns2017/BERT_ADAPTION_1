@@ -12,6 +12,8 @@ Format of the joints used for planning:
 'hipRotor', 'hipFlexor', 'leftShoulderFlexor', 'leftShoulderAbduction',  'leftHumeralRotation', 'leftElbowFlexor','leftWristPronation', 'leftWristAbduction', 'leftWristFlexor'
 
 Assembled from handover code by Dejanira Araiza-Illan February 2016.
+
+Extended and developed by Harrison Boyns September 2018s
 """
 
 import sys
@@ -125,7 +127,10 @@ def check_drop_now_call(data):
 	global assert_normal
 	if data.data == 1:
 		assert_normal = 1
-			#--------------------------------------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------------
+
 class ReceiveA2(smach.State): 
     def __init__(self):
         smach.State.__init__(self, outcomes=['outcome1','outcome2','outcome3'])
@@ -169,15 +174,15 @@ class Move(smach.State):
     def execute(self, userdata):	
     	#global cov
     	#cov.start()	
-	#Path planning towards the piece
-	
-	# rospy.Subscriber('check_drop_now', Int8, check_drop_now_call)
+
+	# If online the assert_normal value will be set by a publisher subscriber 
+	# interaction to force the drop pathway
 	if assert_normal == 1:	
 	 	trigger_drop_pathway = 1
-	else:	
+	else:
+		# Randomly assign the value	
 	 	trigger_drop_pathway = random.randint(0, 10)
 
-	# trigger_drop_pathway = 1
 	theplans = interface([-0.5,0.0,-0.75,0.0,1.39,0.0,0.0,-0.5,0.0])
 	for i,plan in enumerate(theplans):
 		set_robot_joints(plan)		
@@ -207,6 +212,8 @@ class Move(smach.State):
 	hand2 = rospy.Publisher('robot_has_piece', Int8, queue_size=1,latch=True)
 	hand2.publish(1)
 	rospy.sleep(0.1)
+
+	# Introduce state fork
 	if trigger_drop_pathway == 1:
 		return 'outcome2'
 	else:
@@ -418,7 +425,7 @@ class Discard(smach.State):
     		return 'outcome2'
         return 'outcome1'
 
-# New
+# Harison Boyns September 2018
 #-------------------------------------------------------------------------------------------------------
 class Drop(smach.State):
     def __init__(self):
@@ -437,7 +444,7 @@ class Drop(smach.State):
 
     	return 'outcome1'
 
-# New
+# Harison Boyns September 2018
 #-------------------------------------------------------------------------------------------------------
 
 class Reset_Drop(smach.State):
@@ -464,6 +471,7 @@ class Reset_Drop(smach.State):
     	return 'outcome1'
 
 #-------------------------------------------------------------------------------------------------------
+# Harison Boyns September 2018 heavily extended.
 
 def main(same_seed):
 	random.seed(same_seed)

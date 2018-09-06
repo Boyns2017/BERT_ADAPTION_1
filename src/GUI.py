@@ -1,3 +1,5 @@
+# Written by Harrison Boyns September 2018
+
 from Tkinter import *
 import ttk
 from PIL import Image, ImageTk
@@ -5,9 +7,6 @@ import time
 import sys
 import rospy
 
-# Should I seperate different components into seperate Methods.
-# That get called seoerately.
-# These would enhance the re-usability of the code
 
 class gui_framework:
 

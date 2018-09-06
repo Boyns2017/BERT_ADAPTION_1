@@ -3,7 +3,7 @@
 """
 This script draws a cylindrical object in Gazebo, and keeps a node with the location of its mass center in x,y,z coordinates (absolute from an origin at the base of the robot. The node is updated via a state machine. 
 
-Written by Dejanira Araiza-Illan, March 2015.
+Written by Dejanira Araiza-Illan, March 2015.  Extended by Harrison Boyns 2018.
 """
 
 import rospy
@@ -50,14 +50,7 @@ def main():
 			piece.publish(0.48,0.17,0.705)
 			print str(0.48)+','+str(0.17)+','+str(0.705)
 		rospy.sleep(0.01)
-		# if drop == 1:
-		# 	print "Human Dive"
-		# 	rospy.sleep(4)
-		# 	trigger = rospy.Publisher("Trigger_Finger", Int8, queue_size=1,latch=True) 
-		#  	getmodel = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
-		# 	data = getmodel('object','')
-		# 	piece=rospy.Publisher('piece_location', Point,queue_size=1,latch=True) 
-		# 	piece.publish(data.pose.position.x+0.3,data.pose.position.y-0.3,data.pose.position.z+0.555)
+		# Harrison Boyns
 		print str(data.pose.position.x+0.3)+','+str(data.pose.position.y-0.3)+','+str(data.pose.position.z+0.555)
 		rospy.Subscriber('resetpiece', Int8, reset)
 		rospy.Subscriber('Leg_Drop', Int8, dropped_it)
@@ -74,7 +67,8 @@ def reset(data):
 	if data.data == 1:
 		setmodel = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)	
 		setmodel(ModelState('object',Pose(Point(0.0,0.0,0.0005),Quaternion(0.0,0.0,0.0,1.0)),Twist(Vector3(0.0,0.0,0.0),Vector3(0.0,0.0,0.0)),'world'))
-		
+
+# Harrison Boyns 2018	
 def dropped_it(data):
 	if data.data == 1:
 		print "Dropped it like a rhythmstick ooo yeah"

@@ -7,6 +7,12 @@ This script converts a list of high-level commands in a *.txt file into a state 
 """
 Modified for the table assembly by Dejanira Araiza-Illan, February 2016
 """
+
+"""
+
+Extended by Harrison Boyns 2018
+
+"""
 import sys
 import rospy
 import smach
@@ -31,6 +37,7 @@ from human_g import move_head
 from human_g import move_hand
 from concrete_gen import one_n_mapping_gaze
 from concrete_gen import one_n_mapping_location
+from coverage import Coverage
 
 instructions=[]
 reception=0
@@ -160,7 +167,9 @@ class Timeout(smach.State):
     	print 'Bored'
     	rospy.sleep(0.1)
 	return 'outcome1'
+
 #----------------------------------------------------------------------------------------------------------
+# Harrison Boyns September  2018
 
 class Dropped(smach.State):
     def __init__(self):
@@ -181,6 +190,8 @@ class Dropped(smach.State):
 	return 'outcome1'
 
 #----------------------------------------------------------------------------------------------------------
+# Harrison Boyns September  2018
+
 class Waits(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['outcome1'])
@@ -190,6 +201,8 @@ class Waits(smach.State):
 	return 'outcome1'
 
 #----------------------------------------------------------------------------------------------------------
+# Harrison Boyns September  2018
+
 class Left_It(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['outcome1'])
@@ -202,6 +215,8 @@ class Left_It(smach.State):
 	rospy.sleep(2)
 	return 'outcome1'
 #----------------------------------------------------------------------------------------------------------
+# Harrison Boyns September  2018
+
 class Picks_It_Up(smach.State):
     def __init__(self):
         smach.State.__init__(self, outcomes=['outcome1'])
@@ -224,6 +239,10 @@ class Picks_It_Up(smach.State):
 
 #-----------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------
+# Heavily extended Harrison Boyns September  2018
+
+
+
 def main(name_file,xx):
     rospy.init_node('human', anonymous=True)
     random.seed(xx)

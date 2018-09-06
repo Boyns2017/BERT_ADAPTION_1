@@ -1,0 +1,28 @@
+assertion1.txt
+assertion1.txt passed by 42 tests sequences
+assertion1.txt failed by 0tests sequences
+
+assertion2.txt
+assertion2.txt passed by 52 tests sequences
+assertion2.txt failed by 0tests sequences
+
+assertion3.txt
+assertion3.txt passed by 126 tests sequences
+assertion3.txt failed by 3tests sequences
+
+assertion4.txt
+assertion4.txt passed by 0 tests sequences
+assertion4.txt failed by 0tests sequences
+
+assertion6.txt
+assertion6.txt passed by 21 tests sequences
+assertion6.txt failed by 0tests sequences
+
+assertion7.txt
+assertion7.txt passed by 0 tests sequences
+assertion7.txt failed by 0tests sequences
+
+assertion8.txt
+assertion8.txt passed by 0 tests sequences
+assertion8.txt failed by 0tests sequences
+

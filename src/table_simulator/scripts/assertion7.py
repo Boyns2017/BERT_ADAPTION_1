@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 """
-Implements assertion 3: if 'flag1==1' then Gazebo_read
+Implements assertion 7: if 'flag1==1'
 
 
-Written by Harrison Boyns, August 2018
+Written by Harrison Boyns, September 2018
+
 """
 import sys
 import rospy

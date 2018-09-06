@@ -1,0 +1,17 @@
+/* Jason Project */
+
+MAS reactive_BDI_Env {
+
+    infrastructure: Centralised
+
+    environment: Env
+
+    agents:
+        human;
+
+        robot;
+
+        meta;
+
+}
+

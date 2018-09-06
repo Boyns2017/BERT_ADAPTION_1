@@ -1,6 +1,9 @@
-inform_leg_begin
-React
-Leg_Dropped
-human_notices
-human_close
-human_pick_up
+tell leg
+receivesignal
+bored
+tell leg
+receivesignal
+set_param location = 0
+set_param pressure = 1
+set_param gaze = 1
+tell humanReady

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Extended by Harrison Septermber 2018
 
 rm ~/catkin_ws/stats.txt
 rm /tmp/a1out*
@@ -36,10 +37,10 @@ while [ $COUNTER -lt 131 ]; do
 	(rosrun table_simulator human.py abstract_test$COUNTER $COUNTER >> /tmp/humanout$COUNTER) &
 	(python /home/harrison/catkin_ws/src/GUI.py abstract_test$COUNTER $COUNTER x) &
 #	(rosrun table_simulator human.py cp_$COUNTER $COUNTER >> /tmp/humanout$COUNTER) &
-	(sleep 100; python src/table_simulator/scripts/check_code_coverage.py)
+	(sleep 200; python src/table_simulator/scripts/check_code_coverage.py)
 	cat /tmp/rospids | xargs kill 
 	
-        let COUNTER=COUNTER+1 
+    let COUNTER=COUNTER+1 
 done
 
 cat /tmp/mainpids | xargs kill 

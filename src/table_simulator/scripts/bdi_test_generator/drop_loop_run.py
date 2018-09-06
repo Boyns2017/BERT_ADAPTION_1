@@ -1,3 +1,6 @@
+""" File used to create the BDI meta text, seperate files, sort filesand drive to the correct folder currently in use 
+	Created by Harrison Boyns 2018 """
+
 #!/usr/bin/env python
 
 import pexpect
@@ -10,6 +13,7 @@ import os, shutil
 
 def main(number_file):
 
+	# Belief Hierarchy
 	choose_belief_1 = ["leg1", "leg2", "leg3", "leg4"]      # This will be fed directly in as a script
 	choose_belief_2 = ["dropped"]
 	choose_belief_3 = ["human_waits", "human_notices"]
@@ -18,7 +22,7 @@ def main(number_file):
 	choose_belief_6 = ["indecisive", "decisive"]
 	j = 0
 	random.seed(300)
-	# Assemble 100 cases randomly but with constraints
+	# Create meta text file
 	for ii in range(0,20):
 		f = open('/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/meta_orders.txt', 'w')
 		print "Working"
@@ -36,7 +40,7 @@ def main(number_file):
 		f.write(choose_belief_6[select2]+'\n')
 		f.close()
 		print "Spawning"
-		#  /home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/
+		# Spawn the jar file I.e the BDI network
 		child = pexpect.spawn('java -jar /home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/reactive_BDI_Env.jar')
 		time.sleep(5)
 		pexpect.signal.SIGINT
@@ -45,14 +49,10 @@ def main(number_file):
 		f1.write('------------\n')
 		f1.close()
 
-	# Separate tests in individual files
+	# Separate tests into individual files
 	i = 1
 	print "Seperating"
-	#/home/harrison/catkin_ws/src/table_simulator/scripts/bdi_test_generator/
-	#/home/harrison/catkin_ws/src/table_simulator/scripts/test_folder/
-
 	folder = '/home/harrison/catkin_ws/src/table_simulator/scripts/tests_folder'
-	
 	for the_file in os.listdir(folder):
 		file_path = os.path.join(folder, the_file)
 		try:
@@ -62,7 +62,10 @@ def main(number_file):
 		except Exception as e:
 			print(e)	
 
-	for num,command in enumerate(open('/home/harrison/catkin_ws/src/table_simulator/scripts/output.txt','r')):
+	# Separate tests into individual files
+	# Place into the test folder
+#	/home/harrison/catkin_ws/src/table_simulator/scripts/output.txt
+	for num,command in enumerate(open('/home/harrison/catkin_ws/output.txt','r')):
 		f = open('/home/harrison/catkin_ws/src/table_simulator/scripts/tests_folder/abstract_test'+str(i)+'.txt', 'a')
 		if re.search("-------",command):
 			f.close()
@@ -72,6 +75,7 @@ def main(number_file):
 
 	x = int(number_file)
 
+	# Replace files in folder currently in use with newly created tests
 	for j in range(0, 5):
 		src = '/home/harrison/catkin_ws/src/table_simulator/scripts/tests_folder'
 		dst = '/home/harrison/catkin_ws/src/table_simulator/scripts/abstract_tests'

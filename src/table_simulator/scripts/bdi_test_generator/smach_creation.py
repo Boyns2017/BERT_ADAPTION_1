@@ -1,3 +1,6 @@
+""" Script to check the correctness of the abstract tests files. created by Harrison Boyns 2018 """
+
+
 import sys
 import rospy
 import smach
@@ -7,21 +10,7 @@ import os
 import math
 import random
 
-''''
-Robot_does_not_notice
-robot_noticed
-robot_close
-robot_far
-robot_pick_up
-robot_indecisive
-robot_left_it
-human_leaves_it_too_long
-human_noticed
-human_close
-human_far
-human_left_it
-'''
-
+# Script to check the correctness of the abstract tests files created
 
 instructions=[]
 reception=0

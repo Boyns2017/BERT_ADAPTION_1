@@ -1,0 +1,563 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Coverage report</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.ba-throttle-debounce.min.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="coverage_html.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(coverage.index_ready);
+    </script>
+</head>
+<body class="indexfile">
+
+<div id="header">
+    <div class="content">
+        <h1>Coverage report:
+            <span class="pc_cov">25%</span>
+        </h1>
+
+        <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
+
+        <form id="filter_container">
+            <input id="filter" type="text" value="" placeholder="filter..." />
+        </form>
+    </div>
+</div>
+
+<div class="help_panel">
+    <img id="panel_icon" src="keybd_open.png" alt="Hide keyboard shortcuts" />
+    <p class="legend">Hot-keys on this page</p>
+    <div>
+    <p class="keyhelp">
+        <span class="key">n</span>
+        <span class="key">s</span>
+        <span class="key">m</span>
+        <span class="key">x</span>
+        
+        <span class="key">c</span> &nbsp; change column sorting
+    </p>
+    </div>
+</div>
+
+<div id="index">
+    <table class="index">
+        <thead>
+            
+            <tr class="tablehead" title="Click to sort">
+                <th class="name left headerSortDown shortkey_n">Module</th>
+                <th class="shortkey_s">statements</th>
+                <th class="shortkey_m">missing</th>
+                <th class="shortkey_x">excluded</th>
+                
+                <th class="right shortkey_c">coverage</th>
+            </tr>
+        </thead>
+        
+        <tfoot>
+            <tr class="total">
+                <td class="name left">Total</td>
+                <td>7920</td>
+                <td>5932</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1988 7920">25%</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            
+            <tr class="file">
+                <td class="name left"><a href="devel_lib_python2_7_dist-packages_table_simulator_msg__Human_py.html">devel/lib/python2.7/dist-packages/table_simulator/msg/_Human.py</a></td>
+                <td>57</td>
+                <td>47</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="10 57">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="devel_lib_python2_7_dist-packages_table_simulator_msg__Robot_py.html">devel/lib/python2.7/dist-packages/table_simulator/msg/_Robot.py</a></td>
+                <td>50</td>
+                <td>45</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 50">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="devel_lib_python2_7_dist-packages_table_simulator_msg__Sensors_py.html">devel/lib/python2.7/dist-packages/table_simulator/msg/_Sensors.py</a></td>
+                <td>60</td>
+                <td>49</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 60">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="src_table_simulator_scripts_interface_plan_py.html">src/table_simulator/scripts/interface_plan.py</a></td>
+                <td>28</td>
+                <td>11</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 28">61%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="src_table_simulator_scripts_robot_py.html">src/table_simulator/scripts/robot.py</a></td>
+                <td>320</td>
+                <td>142</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="178 320">56%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="src_table_simulator_scripts_robot_g_py.html">src/table_simulator/scripts/robot_g.py</a></td>
+                <td>113</td>
+                <td>6</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="107 113">95%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_genpy_message_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/genpy/message.py</a></td>
+                <td>320</td>
+                <td>309</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 320">3%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_genpy_rostime_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/genpy/rostime.py</a></td>
+                <td>203</td>
+                <td>171</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 203">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_moveit_commander_move_group_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/moveit_commander/move_group.py</a></td>
+                <td>296</td>
+                <td>282</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="14 296">5%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_moveit_commander_planning_scene_interface_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/moveit_commander/planning_scene_interface.py</a></td>
+                <td>155</td>
+                <td>152</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 155">2%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_moveit_commander_robot_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/moveit_commander/robot.py</a></td>
+                <td>116</td>
+                <td>113</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="3 116">3%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_moveit_commander_roscpp_initializer_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/moveit_commander/roscpp_initializer.py</a></td>
+                <td>6</td>
+                <td>4</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 6">33%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_moveit_msgs_msg__RobotTrajectory_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/moveit_msgs/msg/_RobotTrajectory.py</a></td>
+                <td>560</td>
+                <td>467</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="93 560">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_names_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/names.py</a></td>
+                <td>119</td>
+                <td>87</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 119">27%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_network_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/network.py</a></td>
+                <td>221</td>
+                <td>156</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="65 221">29%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_rosenv_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/rosenv.py</a></td>
+                <td>26</td>
+                <td>18</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 26">31%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_roslogging_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/roslogging.py</a></td>
+                <td>118</td>
+                <td>81</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="37 118">31%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_xmlrpc_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph/xmlrpc.py</a></td>
+                <td>138</td>
+                <td>119</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="19 138">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_msgs_msg__Clock_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph_msgs/msg/_Clock.py</a></td>
+                <td>61</td>
+                <td>50</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="11 61">18%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rosgraph_msgs_msg__Log_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rosgraph_msgs/msg/_Log.py</a></td>
+                <td>310</td>
+                <td>262</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="48 310">15%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_roslib___init___py.html">/opt/ros/indigo/lib/python2.7/dist-packages/roslib/__init__.py</a></td>
+                <td>9</td>
+                <td>8</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="1 9">11%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_client_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/client.py</a></td>
+                <td>207</td>
+                <td>152</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="55 207">27%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_core_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/core.py</a></td>
+                <td>244</td>
+                <td>186</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="58 244">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_init_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/init.py</a></td>
+                <td>39</td>
+                <td>24</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="15 39">38%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_masterslave_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/masterslave.py</a></td>
+                <td>211</td>
+                <td>131</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="80 211">38%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_registration_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/registration.py</a></td>
+                <td>257</td>
+                <td>125</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="132 257">51%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_rosout_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/rosout.py</a></td>
+                <td>51</td>
+                <td>29</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="22 51">43%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_simtime_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/simtime.py</a></td>
+                <td>39</td>
+                <td>22</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="17 39">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_statistics_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/statistics.py</a></td>
+                <td>103</td>
+                <td>101</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 103">2%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_tcpros_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros.py</a></td>
+                <td>11</td>
+                <td>7</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 11">36%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_tcpros_base_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py</a></td>
+                <td>403</td>
+                <td>178</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="225 403">56%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_tcpros_pubsub_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py</a></td>
+                <td>174</td>
+                <td>85</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="89 174">51%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_tcpros_service_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/tcpros_service.py</a></td>
+                <td>313</td>
+                <td>293</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="20 313">6%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_transport_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/transport.py</a></td>
+                <td>62</td>
+                <td>43</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="19 62">31%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_impl_validators_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/impl/validators.py</a></td>
+                <td>12</td>
+                <td>10</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="2 12">17%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_msg_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/msg.py</a></td>
+                <td>100</td>
+                <td>51</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="49 100">49%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_msproxy_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/msproxy.py</a></td>
+                <td>76</td>
+                <td>69</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="7 76">9%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_names_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/names.py</a></td>
+                <td>107</td>
+                <td>80</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="27 107">25%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_rostime_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/rostime.py</a></td>
+                <td>74</td>
+                <td>56</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 74">24%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_service_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/service.py</a></td>
+                <td>50</td>
+                <td>32</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="18 50">36%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_timer_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/timer.py</a></td>
+                <td>88</td>
+                <td>76</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="12 88">14%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_rospy_topics_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/rospy/topics.py</a></td>
+                <td>537</td>
+                <td>300</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="237 537">44%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_smach_container_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/smach/container.py</a></td>
+                <td>113</td>
+                <td>81</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="32 113">28%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_smach_state_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/smach/state.py</a></td>
+                <td>50</td>
+                <td>42</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="8 50">16%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_smach_state_machine_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/smach/state_machine.py</a></td>
+                <td>203</td>
+                <td>111</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="92 203">45%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_smach_user_data_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/smach/user_data.py</a></td>
+                <td>127</td>
+                <td>114</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="13 127">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_std_msgs_msg__Float64_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/std_msgs/msg/_Float64.py</a></td>
+                <td>50</td>
+                <td>45</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 50">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_std_msgs_msg__Header_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/std_msgs/msg/_Header.py</a></td>
+                <td>99</td>
+                <td>95</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 99">4%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_std_msgs_msg__Int8_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/std_msgs/msg/_Int8.py</a></td>
+                <td>50</td>
+                <td>45</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="5 50">10%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_trajectory_msgs_msg__JointTrajectory_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/trajectory_msgs/msg/_JointTrajectory.py</a></td>
+                <td>276</td>
+                <td>272</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 276">1%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_trajectory_msgs_msg__JointTrajectoryPoint_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/trajectory_msgs/msg/_JointTrajectoryPoint.py</a></td>
+                <td>161</td>
+                <td>155</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="6 161">4%</td>
+            </tr>
+            
+            <tr class="file">
+                <td class="name left"><a href="_opt_ros_indigo_lib_python2_7_dist-packages_trajectory_msgs_msg__MultiDOFJointTrajectory_py.html">/opt/ros/indigo/lib/python2.7/dist-packages/trajectory_msgs/msg/_MultiDOFJointTrajectory.py</a></td>
+                <td>347</td>
+                <td>343</td>
+                <td>0</td>
+                
+                <td class="right" data-ratio="4 347">1%</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <p id="no_rows">
+        No items found using the specified filter.
+    </p>
+</div>
+
+<div id="footer">
+    <div class="content">
+        <p>
+            <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
+            created at 2018-09-03 01:49
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
